@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitosSaludables.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+	<Grid RowDefinitions="180,*">
+
+		<!-- Header con gradiente coral-naranja -->
+		<Grid Grid.Row="0">
+			<Grid.Background>
+				<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+					<GradientStop Color="#ff6b6b" Offset="0.0"/>
+					<GradientStop Color="#ffa552" Offset="1.0"/>
+				</LinearGradientBrush>
+			</Grid.Background>
+
+			<VerticalStackLayout VerticalOptions="End"
+                                 Padding="24,0,24,32"
+                                 Spacing="4">
+				<Label Text="¡Hola de nuevo!"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+				<Label Text="Ingresa a tu cuenta"
+                       FontSize="12"
+                       TextColor="#ffd5c0"
+                       CharacterSpacing="1"
+                       HorizontalTextAlignment="Center"/>
+			</VerticalStackLayout>
+
+			<!-- Curva inferior redondeada -->
+			<BoxView BackgroundColor="White"
+                     HeightRequest="30"
+                     VerticalOptions="End"
+                     CornerRadius="30,30,0,0"/>
+		</Grid>
+
+		<!-- Cuerpo del formulario -->
+		<ScrollView Grid.Row="1">
+			<VerticalStackLayout Padding="28,8,28,28"
+                                 Spacing="16">
+
+				<!-- Campo Correo -->
+				<VerticalStackLayout Spacing="6">
+					<Label Text="CORREO"
+                           FontSize="11"
+                           TextColor="#b0a99e"
+                           CharacterSpacing="1.5"
+                           FontAttributes="Bold"/>
+					<Border BackgroundColor="#f7f5f2"
+                            StrokeThickness="0"
+                            HeightRequest="50">
+						<Border.StrokeShape>
+							<RoundRectangle CornerRadius="12"/>
+						</Border.StrokeShape>
+						<Entry x:Name="emailEntry"
+                               Placeholder="tu@correo.com"
+                               Keyboard="Email"
+                               Text="{Binding Email}"
+                               PlaceholderColor="#c8c2ba"
+                               TextColor="#1a1a2e"
+                               FontSize="14"
+                               BackgroundColor="Transparent"
+                               Margin="4,0"/>
+					</Border>
+				</VerticalStackLayout>
+
+				<!-- Campo Contraseña -->
+				<VerticalStackLayout Spacing="6">
+					<Label Text="CONTRASEÑA"
+                           FontSize="11"
+                           TextColor="#b0a99e"
+                           CharacterSpacing="1.5"
+                           FontAttributes="Bold"/>
+					<Border BackgroundColor="#f7f5f2"
+                            StrokeThickness="0"
+                            HeightRequest="50">
+						<Border.StrokeShape>
+							<RoundRectangle CornerRadius="12"/>
+						</Border.StrokeShape>
+						<Entry x:Name="contrasenaEntry"
+                               Placeholder="••••••••"
+                               IsPassword="True"
+                               Text="{Binding Contrasena}"
+                               PlaceholderColor="#c8c2ba"
+                               TextColor="#1a1a2e"
+                               FontSize="14"
+                               BackgroundColor="Transparent"
+                               Margin="4,0"/>
+					</Border>
+				</VerticalStackLayout>
+
+				<!-- Link olvidaste contraseña -->
+				<Label Text="¿Olvidaste tu contraseña?"
+                       FontSize="12"
+                       TextColor="#ff6b6b"
+                       HorizontalTextAlignment="End"
+                       Margin="0,-6,0,0"/>
+
+				<!-- Botón Ingresar -->
+				<Button Text="Ingresar"
+                        x:Name="LoginBtn"
+                        Clicked="OnLoginClicked"
+                        BackgroundColor="#ff6b6b"
+                        TextColor="White"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        CornerRadius="14"
+                        HeightRequest="52"
+                        Margin="0,8,0,0"
+                        Shadow="{Shadow Brush=#ff6b6b, Offset='0,4', Radius=14, Opacity=0.3}"/>
+
+				<!-- Link registro -->
+				<Label x:Name="RegistroBtn"
+                       Text="¿No tienes cuenta? Regístrate"
+                       FontSize="13"
+                       TextColor="#ff6b6b"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,4,0,0">
+					<Label.GestureRecognizers>
+						<TapGestureRecognizer Tapped="OnRegisterClicked"/>
+					</Label.GestureRecognizers>
+				</Label>
+
+			</VerticalStackLayout>
+		</ScrollView>
+
+	</Grid>
+</ContentPage>

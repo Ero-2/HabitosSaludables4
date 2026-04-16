@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitosSaludables.Views.WelcomeModalPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#CC1a1a2e">
+
+	<!-- Fondo semitransparente con tap para cerrar -->
+	<Grid>
+		<Grid.GestureRecognizers>
+			<TapGestureRecognizer Tapped="OnBackdropTapped"/>
+		</Grid.GestureRecognizers>
+
+		<!-- Tarjeta modal centrada -->
+		<Border BackgroundColor="White"
+                StrokeThickness="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="290"
+                Padding="26,28">
+			<Border.StrokeShape>
+				<RoundRectangle CornerRadius="24"/>
+			</Border.StrokeShape>
+
+			<VerticalStackLayout Spacing="14" HorizontalOptions="Center">
+
+				<!-- Ícono con gradiente verde -->
+				<Border HorizontalOptions="Center"
+                        WidthRequest="60"
+                        HeightRequest="60"
+                        StrokeThickness="0">
+					<Border.StrokeShape>
+						<RoundRectangle CornerRadius="18"/>
+					</Border.StrokeShape>
+					<Border.Background>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop Color="#4ecb8d" Offset="0.0"/>
+							<GradientStop Color="#2ecc71" Offset="1.0"/>
+						</LinearGradientBrush>
+					</Border.Background>
+					<Label Text="🌿"
+                           FontSize="28"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+				</Border>
+
+				<!-- Título -->
+				<Label Text="¡Bienvenido a Hábitos Saludables!"
+                       FontSize="17"
+                       FontAttributes="Bold"
+                       TextColor="#1a1a2e"
+                       HorizontalTextAlignment="Center"
+                       LineBreakMode="WordWrap"/>
+
+				<!-- Descripción -->
+				<Label Text="Comienza a registrar tu día y construye mejores hábitos paso a paso."
+                       FontSize="13"
+                       TextColor="#a09890"
+                       HorizontalTextAlignment="Center"
+                       LineBreakMode="WordWrap"
+                       LineHeight="1.4"/>
+
+				<!-- Separador -->
+				<BoxView BackgroundColor="#f0ede8"
+                         HeightRequest="1"
+                         Margin="0,2"/>
+
+				<!-- Botón principal -->
+				<Button Text="¡Vamos! 🚀"
+                        Clicked="OnCloseClicked"
+                        BackgroundColor="#1a1a2e"
+                        TextColor="White"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        CornerRadius="14"
+                        HeightRequest="48"
+                        HorizontalOptions="FillAndExpand"
+                        Shadow="{Shadow Brush=#1a1a2e, Offset='0,4', Radius=12, Opacity=0.2}"/>
+
+				<!-- Link cerrar -->
+				<Label Text="Ahora no"
+                       FontSize="12"
+                       TextColor="#c8c2ba"
+                       HorizontalTextAlignment="Center">
+					<Label.GestureRecognizers>
+						<TapGestureRecognizer Tapped="OnCloseClicked"/>
+					</Label.GestureRecognizers>
+				</Label>
+
+			</VerticalStackLayout>
+		</Border>
+
+	</Grid>
+</ContentPage>
