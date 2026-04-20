@@ -35,6 +35,8 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Nueva columna para Logout -->
                 </Grid.ColumnDefinitions>
 
                 <VerticalStackLayout Grid.Column="0" Spacing="3">
@@ -56,7 +58,8 @@
                         Stroke="#80c0d8f0"
                         WidthRequest="44"
                         HeightRequest="44"
-                        VerticalOptions="Center">
+                        VerticalOptions="Center"
+                        Margin="0,0,10,0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="22"/>
                     </Border.StrokeShape>
@@ -64,6 +67,26 @@
                            FontSize="17"
                            FontAttributes="Bold"
                            TextColor="#1a2040"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+
+                <!-- Botón Logout -->
+                <Border Grid.Column="2"
+                        BackgroundColor="#80ffdede"
+                        StrokeThickness="1"
+                        Stroke="#80ffb0b0"
+                        WidthRequest="44"
+                        HeightRequest="44"
+                        VerticalOptions="Center">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLogoutClicked"/>
+                    </Border.GestureRecognizers>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22"/>
+                    </Border.StrokeShape>
+                    <Label Text="🚪" 
+                           FontSize="18"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"/>
                 </Border>
