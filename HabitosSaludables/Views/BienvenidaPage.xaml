@@ -3,86 +3,138 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.BienvenidaPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#f2faf5">
+             BackgroundColor="#f0f6ff">
 
     <Grid RowDefinitions="*,Auto">
 
-        <!-- Zona superior ilustrada -->
-        <Grid Grid.Row="0" BackgroundColor="#f2faf5">
+        <!-- Header con gradientes y elementos decorativos -->
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#f0f6ff" Offset="0.0"/>
+                    <GradientStop Color="#e4eeff" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
-            <!-- Bloque verde oscuro como acento superior -->
-            <BoxView BackgroundColor="#0d2918"
-                     HeightRequest="6"
-                     VerticalOptions="Start"
-                     HorizontalOptions="Fill"/>
+            <!-- Barra superior decorativa -->
+            <BoxView HeightRequest="6" VerticalOptions="Start" HorizontalOptions="Fill">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#1a56c4" Offset="0.0"/>
+                        <GradientStop Color="#4a9eff" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
 
-            <!-- Forma decorativa esquina derecha -->
-            <BoxView BackgroundColor="#e0f2e8"
-                     WidthRequest="180"
-                     HeightRequest="180"
-                     HorizontalOptions="End"
-                     VerticalOptions="Start"
-                     Rotation="30"
-                     Margin="0,-40,-50,0"
-                     CornerRadius="32"/>
+            <!-- Elementos decorativos de fondo -->
+            <BoxView WidthRequest="200" HeightRequest="200"
+                     HorizontalOptions="End" VerticalOptions="Start"
+                     Rotation="30" CornerRadius="36"
+                     Margin="0,-50,-60,0" Opacity="0.6">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#c8dcff" Offset="0.0"/>
+                        <GradientStop Color="#dce8ff" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
 
-            <!-- Círculo decorativo izquierda -->
-            <Ellipse WidthRequest="100"
-                     HeightRequest="100"
-                     Fill="#d0edda"
-                     HorizontalOptions="Start"
-                     VerticalOptions="End"
-                     Margin="-20,0,0,60"/>
+            <Ellipse WidthRequest="110" HeightRequest="110"
+                     HorizontalOptions="Start" VerticalOptions="End"
+                     Margin="-30,0,0,50" Opacity="0.6">
+                <Ellipse.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#b8ccf0" Offset="0.0"/>
+                        <GradientStop Color="#c8dcff" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
 
-            <VerticalStackLayout VerticalOptions="Center"
-                                 Padding="32,0,32,0"
-                                 Spacing="16">
+            <!-- Contenido principal centrado -->
+            <VerticalStackLayout VerticalOptions="Center" 
+                                 HorizontalOptions="Center"
+                                 Padding="24" Spacing="20">
 
-                <!-- Badge app -->
-                <Border BackgroundColor="#e0f2e8"
-                        StrokeThickness="0"
-                        HorizontalOptions="Start"
-                        Padding="12,6">
+                <!-- 🔥 ICONO GRANDE CENTRAL -->
+                <Border StrokeThickness="0" 
+                        WidthRequest="140" HeightRequest="140"
+                        HorizontalOptions="Center"
+                        Margin="0,0,0,12">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="8"/>
+                        <RoundRectangle CornerRadius="35"/>
                     </Border.StrokeShape>
-                    <HorizontalStackLayout Spacing="6">
-                        <Label Text="🌿" FontSize="14" VerticalOptions="Center"/>
-                        <Label Text="Hábitos Saludables"
-                               FontSize="11"
-                               FontAttributes="Bold"
-                               TextColor="#1a4d2e"
-                               VerticalOptions="Center"/>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1a4abf" Offset="0.0"/>
+                            <GradientStop Color="#4a9eff" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="🏋️‍♂️" 
+                           FontSize="72" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center"
+                           Margin="0,8,0,0"/>
+                </Border>
+
+                <!-- Logo compacto -->
+                <Border StrokeThickness="0" HorizontalOptions="Center" Padding="14,8">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#dce8ff" Offset="0.0"/>
+                            <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="💧" FontSize="20" VerticalOptions="Center"/>
+                        <Label Text="Hábitos Saludables" 
+                               FontSize="14" FontAttributes="Bold" 
+                               TextColor="#1a3a7a" VerticalOptions="Center"/>
                     </HorizontalStackLayout>
                 </Border>
 
+                <!-- Título principal -->
                 <Label Text="Mejor tú,&#10;cada día."
-                       FontSize="38"
-                       FontAttributes="Bold"
-                       TextColor="#0d2918"
-                       LineHeight="1.1"
-                       CharacterSpacing="-0.5"/>
+                       FontSize="38" FontAttributes="Bold"
+                       TextColor="#0a1f3d" 
+                       LineHeight="1.1" 
+                       CharacterSpacing="-0.5"
+                       HorizontalTextAlignment="Center"/>
 
+                <!-- Descripción -->
                 <Label Text="Construye rutinas que transforman tu vida con hábitos simples y constantes."
-                       FontSize="14"
-                       TextColor="#5a8a6a"
-                       LineHeight="1.5"/>
+                       FontSize="14" TextColor="#4a6a9a" 
+                       LineHeight="1.5"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,8,0,0"/>
 
-                <!-- Stat pills -->
-                <HorizontalStackLayout Spacing="10" Margin="0,8,0,0">
-                    <Border BackgroundColor="#e0f2e8" StrokeThickness="0" Padding="12,7">
+                <!-- Badges informativos -->
+                <HorizontalStackLayout Spacing="12" Margin="0,16,0,0" HorizontalOptions="Center">
+                    <Border StrokeThickness="0" Padding="14,8">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10"/>
+                            <RoundRectangle CornerRadius="12"/>
                         </Border.StrokeShape>
-                        <Label Text="✦  100% gratis"
-                               FontSize="11" FontAttributes="Bold" TextColor="#1a4d2e"/>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="✦ 100% gratis" FontSize="12" FontAttributes="Bold" TextColor="#1a3a7a"/>
                     </Border>
-                    <Border BackgroundColor="#e0f2e8" StrokeThickness="0" Padding="12,7">
+                    <Border StrokeThickness="0" Padding="14,8">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10"/>
+                            <RoundRectangle CornerRadius="12"/>
                         </Border.StrokeShape>
-                        <Label Text="Sin anuncios"
-                               FontSize="11" FontAttributes="Bold" TextColor="#1a4d2e"/>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="Sin anuncios" FontSize="12" FontAttributes="Bold" TextColor="#1a3a7a"/>
                     </Border>
                 </HorizontalStackLayout>
 
@@ -90,35 +142,37 @@
         </Grid>
 
         <!-- Botones inferiores -->
-        <VerticalStackLayout Grid.Row="1"
-                             BackgroundColor="#f2faf5"
-                             Padding="24,16,24,52"
-                             Spacing="12">
+        <VerticalStackLayout Grid.Row="1" Padding="24,16,24,52" Spacing="14">
 
-            <Button Text="Comenzar ahora"
-                    x:Name="RegistroBtn"
-                    Clicked="OnRegisterClicked"
-                    BackgroundColor="#0d2918"
-                    TextColor="#4ecb8d"
-                    FontSize="15"
-                    FontAttributes="Bold"
-                    CornerRadius="16"
-                    HeightRequest="56"/>
+            <Border StrokeThickness="0" HeightRequest="58">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18"/>
+                </Border.StrokeShape>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#1a4abf" Offset="0.0"/>
+                        <GradientStop Color="#2e6aef" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Button Text="Comenzar ahora"
+                        x:Name="RegistroBtn"
+                        Clicked="OnRegisterClicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#ffffff"
+                        FontSize="16" FontAttributes="Bold"/>
+            </Border>
 
             <Border BackgroundColor="Transparent"
-                    StrokeThickness="1.5"
-                    Stroke="#c0dfc8"
-                    HeightRequest="52">
+                    StrokeThickness="1.5" Stroke="#b0c8f0" HeightRequest="54">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="16"/>
+                    <RoundRectangle CornerRadius="18"/>
                 </Border.StrokeShape>
                 <Button Text="Ya tengo cuenta"
                         x:Name="LoginBtn"
                         Clicked="OnLoginClicked"
                         BackgroundColor="Transparent"
-                        TextColor="#2a6644"
-                        FontSize="14"
-                        FontAttributes="Bold"/>
+                        TextColor="#2a5aaa"
+                        FontSize="15" FontAttributes="Bold"/>
             </Border>
 
         </VerticalStackLayout>

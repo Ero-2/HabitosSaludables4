@@ -5,329 +5,356 @@
              x:Class="HabitosSaludables.Views.PerfilPage"
              x:DataType="viewmodels:PerfilViewModel"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#f2faf5">
+             BackgroundColor="#f0f6ff">
 
-	<Grid RowDefinitions="Auto,*">
+    <Grid RowDefinitions="Auto,*">
 
-		<!-- Header verde oscuro con avatar -->
-		<Grid Grid.Row="0" BackgroundColor="#0d2918">
+        <!-- Header degradado azul -->
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0a1f3d" Offset="0.0"/>
+                    <GradientStop Color="#1a3f7a" Offset="0.6"/>
+                    <GradientStop Color="#0f2a54" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
-			<Ellipse HorizontalOptions="End" VerticalOptions="Start"
-                     WidthRequest="150" HeightRequest="150"
-                     Fill="#1a4d2e" Margin="0,-40,-30,0"/>
-			<BoxView BackgroundColor="#162e1e"
-                     WidthRequest="100" HeightRequest="100"
+            <Ellipse HorizontalOptions="End" VerticalOptions="Start"
+                     WidthRequest="160" HeightRequest="160"
+                     Margin="0,-40,-30,0" Opacity="0.4">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#2e6abf" Offset="0.0"/>
+                        <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <BoxView WidthRequest="110" HeightRequest="110"
                      HorizontalOptions="Start" VerticalOptions="End"
-                     Rotation="20" CornerRadius="20"
-                     Margin="-30,0,0,-20"/>
+                     Rotation="20" CornerRadius="22"
+                     Margin="-30,0,0,-20" Opacity="0.2">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1a3060" Offset="0.0"/>
+                        <GradientStop Color="#0f2244" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
 
-			<VerticalStackLayout Padding="24,52,24,28" Spacing="16">
+            <VerticalStackLayout Padding="24,52,24,28" Spacing="16">
 
-				<!-- Fila top: back + titulo + editar -->
-				<Grid ColumnDefinitions="Auto,*,Auto">
-
-					<Border Grid.Column="0"
-                            BackgroundColor="#1a3d24"
-                            StrokeThickness="1" Stroke="#2a5e38"
-                            WidthRequest="36" HeightRequest="36"
-                            VerticalOptions="Center">
-						<Border.StrokeShape>
-							<RoundRectangle CornerRadius="10"/>
-						</Border.StrokeShape>
-						<Label Text="&#8249;" FontSize="20" TextColor="#4ecb8d"
+                <!-- Top row -->
+                <Grid ColumnDefinitions="Auto,*,Auto">
+                    <Border Grid.Column="0"
+                            StrokeThickness="1" Stroke="#1e4a8a"
+                            WidthRequest="36" HeightRequest="36" VerticalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#0f2a54" Offset="0.0"/>
+                                <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="&#8249;" FontSize="20" TextColor="#4a9eff"
                                HorizontalOptions="Center" VerticalOptions="Center"/>
-					</Border>
+                    </Border>
 
-					<Label Grid.Column="1"
+                    <Label Grid.Column="1"
                            Text="Mi Perfil"
-                           FontSize="18" FontAttributes="Bold"
-                           TextColor="#ffffff"
+                           FontSize="18" FontAttributes="Bold" TextColor="#ffffff"
                            HorizontalOptions="Center" VerticalOptions="Center"/>
 
-					<Border Grid.Column="2"
-                            BackgroundColor="#1a4d2e"
-                            StrokeThickness="1" Stroke="#2e7a48"
+                    <Border Grid.Column="2"
+                            StrokeThickness="1" Stroke="#2e6abf"
                             VerticalOptions="Center" Padding="12,7">
-						<Border.StrokeShape>
-							<RoundRectangle CornerRadius="10"/>
-						</Border.StrokeShape>
-						<Label Text="Editar" FontSize="12" FontAttributes="Bold" TextColor="#4ecb8d"/>
-						<Border.GestureRecognizers>
-							<TapGestureRecognizer Command="{Binding EditarPerfilCommand}"/>
-						</Border.GestureRecognizers>
-					</Border>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#1a3f7a" Offset="0.0"/>
+                                <GradientStop Color="#2e5aaa" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="Editar" FontSize="12" FontAttributes="Bold" TextColor="#4a9eff"/>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding EditarPerfilCommand}"/>
+                        </Border.GestureRecognizers>
+                    </Border>
+                </Grid>
 
-				</Grid>
-
-				<!-- Avatar + nombre + email -->
-				<HorizontalStackLayout Spacing="18">
-
-					<Border BackgroundColor="#1e5c34"
-                            StrokeThickness="3" Stroke="#4ecb8d"
+                <!-- Avatar + datos -->
+                <HorizontalStackLayout Spacing="18">
+                    <Border StrokeThickness="3" Stroke="#4a9eff"
                             WidthRequest="72" HeightRequest="72">
-						<Border.StrokeShape>
-							<RoundRectangle CornerRadius="36"/>
-						</Border.StrokeShape>
-						<Label Text="{Binding Iniciales}"
-                               FontSize="26" FontAttributes="Bold"
-                               TextColor="#4ecb8d"
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="36"/>
+                        </Border.StrokeShape>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#1a3f7a" Offset="0.0"/>
+                                <GradientStop Color="#0f2a54" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Text="{Binding Iniciales}"
+                               FontSize="26" FontAttributes="Bold" TextColor="#4a9eff"
                                HorizontalOptions="Center" VerticalOptions="Center"/>
-					</Border>
+                    </Border>
 
-					<VerticalStackLayout VerticalOptions="Center" Spacing="4">
-						<Label Text="{Binding NombreUsuario}"
+                    <VerticalStackLayout VerticalOptions="Center" Spacing="4">
+                        <Label Text="{Binding NombreUsuario}"
                                FontSize="20" FontAttributes="Bold"
                                TextColor="#ffffff" CharacterSpacing="-0.3"/>
-						<Label Text="{Binding Email}"
-                               FontSize="12" TextColor="#4a7a58"/>
-						<Border BackgroundColor="#1a4d2e"
-                                StrokeThickness="1" Stroke="#2e7a48"
+                        <Label Text="{Binding Email}" FontSize="12" TextColor="#4a6a9a"/>
+                        <Border StrokeThickness="1" Stroke="#2e6abf"
                                 HorizontalOptions="Start" Padding="10,4">
-							<Border.StrokeShape>
-								<RoundRectangle CornerRadius="8"/>
-							</Border.StrokeShape>
-							<Label Text="{Binding NivelUsuario}"
-                                   FontSize="10" FontAttributes="Bold" TextColor="#4ecb8d"/>
-						</Border>
-					</VerticalStackLayout>
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8"/>
+                            </Border.StrokeShape>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#1a3f7a" Offset="0.0"/>
+                                    <GradientStop Color="#2e5aaa" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Text="{Binding NivelUsuario}"
+                                   FontSize="10" FontAttributes="Bold" TextColor="#4a9eff"/>
+                        </Border>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
 
-				</HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
 
-			</VerticalStackLayout>
-		</Grid>
+        <!-- Cuerpo -->
+        <ScrollView Grid.Row="1" BackgroundColor="#f0f6ff">
+            <VerticalStackLayout Padding="18,20,18,40" Spacing="14">
 
-		<!-- Cuerpo scrollable -->
-		<ScrollView Grid.Row="1" BackgroundColor="#f2faf5">
-			<VerticalStackLayout Padding="18,20,18,40" Spacing="14">
-
-				<!-- ESTADISTICAS -->
-				<Label Text="ESTADISTICAS"
+                <Label Text="ESTADÍSTICAS"
                        FontSize="10" FontAttributes="Bold"
-                       TextColor="#8ab89a" CharacterSpacing="2"
-                       Margin="4,0"/>
+                       TextColor="#7a9abe" CharacterSpacing="2" Margin="4,0"/>
 
-				<Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
-
-					<Border Grid.Column="0"
-                            BackgroundColor="#0d2918"
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                    <Border Grid.Column="0"
                             StrokeThickness="0" Padding="14,16">
-						<Border.StrokeShape>
-							<RoundRectangle CornerRadius="16"/>
-						</Border.StrokeShape>
-						<VerticalStackLayout Spacing="4" HorizontalOptions="Center">
-							<Label Text="{Binding TotalHabitos}"
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#0a1f3d" Offset="0.0"/>
+                                <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding TotalHabitos}"
                                    FontSize="26" FontAttributes="Bold"
-                                   TextColor="#4ecb8d" HorizontalOptions="Center"/>
-							<Label Text="Habitos" FontSize="10" TextColor="#4a7a58"
-                                   HorizontalOptions="Center"/>
-						</VerticalStackLayout>
-					</Border>
+                                   TextColor="#4a9eff" HorizontalOptions="Center"/>
+                            <Label Text="Hábitos" FontSize="10" TextColor="#4a6a9a" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
 
-					<Border Grid.Column="1"
+                    <Border Grid.Column="1"
                             BackgroundColor="#ffffff"
-                            StrokeThickness="1.5" Stroke="#d8eede" Padding="14,16">
-						<Border.StrokeShape>
-							<RoundRectangle CornerRadius="16"/>
-						</Border.StrokeShape>
-						<VerticalStackLayout Spacing="4" HorizontalOptions="Center">
-							<Label Text="{Binding RachaMaxima}"
+                            StrokeThickness="1.5" Stroke="#c8d8f8" Padding="14,16">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding RachaMaxima}"
                                    FontSize="26" FontAttributes="Bold"
-                                   TextColor="#0d2918" HorizontalOptions="Center"/>
-							<Label Text="Racha max" FontSize="10" TextColor="#8ab89a"
-                                   HorizontalOptions="Center"/>
-						</VerticalStackLayout>
-					</Border>
+                                   TextColor="#0a1f3d" HorizontalOptions="Center"/>
+                            <Label Text="Racha max" FontSize="10" TextColor="#7a9abe" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
 
-					<Border Grid.Column="2"
+                    <Border Grid.Column="2"
                             BackgroundColor="#ffffff"
-                            StrokeThickness="1.5" Stroke="#d8eede" Padding="14,16">
-						<Border.StrokeShape>
-							<RoundRectangle CornerRadius="16"/>
-						</Border.StrokeShape>
-						<VerticalStackLayout Spacing="4" HorizontalOptions="Center">
-							<Label Text="{Binding DiasActivo}"
+                            StrokeThickness="1.5" Stroke="#c8d8f8" Padding="14,16">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding DiasActivo}"
                                    FontSize="26" FontAttributes="Bold"
-                                   TextColor="#0d2918" HorizontalOptions="Center"/>
-							<Label Text="Dias activo" FontSize="10" TextColor="#8ab89a"
-                                   HorizontalOptions="Center"/>
-						</VerticalStackLayout>
-					</Border>
+                                   TextColor="#0a1f3d" HorizontalOptions="Center"/>
+                            <Label Text="Días activo" FontSize="10" TextColor="#7a9abe" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
 
-				</Grid>
-
-				<!-- LOGROS -->
-				<Label Text="LOGROS"
+                <Label Text="LOGROS"
                        FontSize="10" FontAttributes="Bold"
-                       TextColor="#8ab89a" CharacterSpacing="2"
-                       Margin="4,6,4,0"/>
+                       TextColor="#7a9abe" CharacterSpacing="2" Margin="4,6,4,0"/>
 
-				<CollectionView ItemsSource="{Binding Logros}" HeightRequest="110">
-					<CollectionView.ItemsLayout>
-						<LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
-					</CollectionView.ItemsLayout>
-					<CollectionView.ItemTemplate>
-						<DataTemplate>
-							<Border BackgroundColor="{Binding Desbloqueado, Converter={StaticResource BoolToLogrosColorConverter}}"
+                <CollectionView ItemsSource="{Binding Logros}" HeightRequest="110">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BackgroundColor="{Binding Desbloqueado, Converter={StaticResource BoolToLogrosColorConverter}}"
                                     StrokeThickness="1.5"
                                     Stroke="{Binding Desbloqueado, Converter={StaticResource BoolToLogrosBorderConverter}}"
                                     WidthRequest="90" Padding="12,14">
-								<Border.StrokeShape>
-									<RoundRectangle CornerRadius="16"/>
-								</Border.StrokeShape>
-								<VerticalStackLayout Spacing="6" HorizontalOptions="Center">
-									<Label Text="{Binding Emoji}"
-                                           FontSize="26" HorizontalOptions="Center"
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="16"/>
+                                </Border.StrokeShape>
+                                <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                                    <Label Text="{Binding Emoji}" FontSize="26" HorizontalOptions="Center"
                                            Opacity="{Binding Desbloqueado, Converter={StaticResource BoolToOpacityConverter}}"/>
-									<Label Text="{Binding Titulo}"
-                                           FontSize="9" FontAttributes="Bold"
+                                    <Label Text="{Binding Titulo}" FontSize="9" FontAttributes="Bold"
                                            TextColor="{Binding Desbloqueado, Converter={StaticResource BoolToLogrosTextConverter}}"
-                                           HorizontalOptions="Center"
-                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="Center" HorizontalTextAlignment="Center"
                                            LineBreakMode="WordWrap"/>
-								</VerticalStackLayout>
-							</Border>
-						</DataTemplate>
-					</CollectionView.ItemTemplate>
-				</CollectionView>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-				<!-- CONFIGURACION -->
-				<Label Text="CONFIGURACION"
+                <Label Text="CONFIGURACIÓN"
                        FontSize="10" FontAttributes="Bold"
-                       TextColor="#8ab89a" CharacterSpacing="2"
-                       Margin="4,6,4,0"/>
+                       TextColor="#7a9abe" CharacterSpacing="2" Margin="4,6,4,0"/>
 
-				<!-- Notificaciones -->
-				<Border BackgroundColor="#ffffff"
-                        StrokeThickness="1.5" Stroke="#d8eede" Padding="16,14">
-					<Border.StrokeShape>
-						<RoundRectangle CornerRadius="14"/>
-					</Border.StrokeShape>
-					<Grid ColumnDefinitions="36,*,Auto">
-						<Border Grid.Column="0"
-                                BackgroundColor="#e0f2e8" StrokeThickness="0"
-                                WidthRequest="32" HeightRequest="32">
-							<Border.StrokeShape>
-								<RoundRectangle CornerRadius="9"/>
-							</Border.StrokeShape>
-							<Label Text="&#128276;" FontSize="16"
-                                   HorizontalOptions="Center" VerticalOptions="Center"/>
-						</Border>
-						<VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
-							<Label Text="Notificaciones" FontSize="14" FontAttributes="Bold" TextColor="#0d2918"/>
-							<Label Text="Recordatorios diarios" FontSize="11" TextColor="#8ab89a"/>
-						</VerticalStackLayout>
-						<Switch Grid.Column="2"
+                <!-- Opciones -->
+                <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#c8d8f8" Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Border Grid.Column="0" StrokeThickness="0" WidthRequest="32" HeightRequest="32">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="9"/>
+                            </Border.StrokeShape>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                    <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Text="&#128276;" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
+                            <Label Text="Notificaciones" FontSize="14" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                            <Label Text="Recordatorios diarios" FontSize="11" TextColor="#7a9abe"/>
+                        </VerticalStackLayout>
+                        <Switch Grid.Column="2"
                                 IsToggled="{Binding NotificacionesActivas}"
-                                OnColor="#4ecb8d" ThumbColor="#0d2918"
+                                OnColor="#2e6aef" ThumbColor="#0a1f3d"
                                 VerticalOptions="Center"/>
-					</Grid>
-				</Border>
+                    </Grid>
+                </Border>
 
-				<!-- Meta diaria -->
-				<Border BackgroundColor="#ffffff"
-                        StrokeThickness="1.5" Stroke="#d8eede" Padding="16,14">
-					<Border.StrokeShape>
-						<RoundRectangle CornerRadius="14"/>
-					</Border.StrokeShape>
-					<Grid ColumnDefinitions="36,*,Auto">
-						<Border Grid.Column="0"
-                                BackgroundColor="#e0f2e8" StrokeThickness="0"
-                                WidthRequest="32" HeightRequest="32">
-							<Border.StrokeShape>
-								<RoundRectangle CornerRadius="9"/>
-							</Border.StrokeShape>
-							<Label Text="&#127919;" FontSize="16"
-                                   HorizontalOptions="Center" VerticalOptions="Center"/>
-						</Border>
-						<VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
-							<Label Text="Meta diaria" FontSize="14" FontAttributes="Bold" TextColor="#0d2918"/>
-							<Label Text="{Binding MetaDiaria, StringFormat='{0} habitos por dia'}"
-                                   FontSize="11" TextColor="#8ab89a"/>
-						</VerticalStackLayout>
-						<Label Grid.Column="2"
-                               Text="&#8250;" FontSize="22" TextColor="#b8d4c0"
-                               VerticalOptions="Center"/>
-					</Grid>
-					<Border.GestureRecognizers>
-						<TapGestureRecognizer Command="{Binding EditarMetaCommand}"/>
-					</Border.GestureRecognizers>
-				</Border>
+                <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#c8d8f8" Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Border Grid.Column="0" StrokeThickness="0" WidthRequest="32" HeightRequest="32">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="9"/>
+                            </Border.StrokeShape>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                    <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Text="&#127919;" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
+                            <Label Text="Meta diaria" FontSize="14" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                            <Label Text="{Binding MetaDiaria, StringFormat='{0} hábitos por día'}"
+                                   FontSize="11" TextColor="#7a9abe"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="&#8250;" FontSize="22" TextColor="#a8c4e8" VerticalOptions="Center"/>
+                    </Grid>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EditarMetaCommand}"/>
+                    </Border.GestureRecognizers>
+                </Border>
 
-				<!-- Apariencia -->
-				<Border BackgroundColor="#ffffff"
-                        StrokeThickness="1.5" Stroke="#d8eede" Padding="16,14">
-					<Border.StrokeShape>
-						<RoundRectangle CornerRadius="14"/>
-					</Border.StrokeShape>
-					<Grid ColumnDefinitions="36,*,Auto">
-						<Border Grid.Column="0"
-                                BackgroundColor="#e0f2e8" StrokeThickness="0"
-                                WidthRequest="32" HeightRequest="32">
-							<Border.StrokeShape>
-								<RoundRectangle CornerRadius="9"/>
-							</Border.StrokeShape>
-							<Label Text="&#127912;" FontSize="16"
-                                   HorizontalOptions="Center" VerticalOptions="Center"/>
-						</Border>
-						<VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
-							<Label Text="Apariencia" FontSize="14" FontAttributes="Bold" TextColor="#0d2918"/>
-							<Label Text="Tema verde" FontSize="11" TextColor="#8ab89a"/>
-						</VerticalStackLayout>
-						<Label Grid.Column="2"
-                               Text="&#8250;" FontSize="22" TextColor="#b8d4c0"
-                               VerticalOptions="Center"/>
-					</Grid>
-					<Border.GestureRecognizers>
-						<TapGestureRecognizer Command="{Binding EditarTemaCommand}"/>
-					</Border.GestureRecognizers>
-				</Border>
+                <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#c8d8f8" Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Border Grid.Column="0" StrokeThickness="0" WidthRequest="32" HeightRequest="32">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="9"/>
+                            </Border.StrokeShape>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                    <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Text="&#127912;" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
+                            <Label Text="Apariencia" FontSize="14" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                            <Label Text="Tema azul" FontSize="11" TextColor="#7a9abe"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="&#8250;" FontSize="22" TextColor="#a8c4e8" VerticalOptions="Center"/>
+                    </Grid>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EditarTemaCommand}"/>
+                    </Border.GestureRecognizers>
+                </Border>
 
-				<!-- Exportar datos -->
-				<Border BackgroundColor="#ffffff"
-                        StrokeThickness="1.5" Stroke="#d8eede" Padding="16,14">
-					<Border.StrokeShape>
-						<RoundRectangle CornerRadius="14"/>
-					</Border.StrokeShape>
-					<Grid ColumnDefinitions="36,*,Auto">
-						<Border Grid.Column="0"
-                                BackgroundColor="#e0f2e8" StrokeThickness="0"
-                                WidthRequest="32" HeightRequest="32">
-							<Border.StrokeShape>
-								<RoundRectangle CornerRadius="9"/>
-							</Border.StrokeShape>
-							<Label Text="&#128228;" FontSize="16"
-                                   HorizontalOptions="Center" VerticalOptions="Center"/>
-						</Border>
-						<VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
-							<Label Text="Exportar mis datos" FontSize="14" FontAttributes="Bold" TextColor="#0d2918"/>
-							<Label Text="Descarga tu historial" FontSize="11" TextColor="#8ab89a"/>
-						</VerticalStackLayout>
-						<Label Grid.Column="2"
-                               Text="&#8250;" FontSize="22" TextColor="#b8d4c0"
-                               VerticalOptions="Center"/>
-					</Grid>
-					<Border.GestureRecognizers>
-						<TapGestureRecognizer Command="{Binding ExportarDatosCommand}"/>
-					</Border.GestureRecognizers>
-				</Border>
+                <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#c8d8f8" Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Border Grid.Column="0" StrokeThickness="0" WidthRequest="32" HeightRequest="32">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="9"/>
+                            </Border.StrokeShape>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                    <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Text="&#128228;" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
+                            <Label Text="Exportar mis datos" FontSize="14" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                            <Label Text="Descarga tu historial" FontSize="11" TextColor="#7a9abe"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="&#8250;" FontSize="22" TextColor="#a8c4e8" VerticalOptions="Center"/>
+                    </Grid>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ExportarDatosCommand}"/>
+                    </Border.GestureRecognizers>
+                </Border>
 
-				<BoxView BackgroundColor="#d8eede" HeightRequest="1" Margin="0,6"/>
+                <BoxView HeightRequest="1" Margin="0,6">
+                    <BoxView.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#c8d8ff" Offset="0.0"/>
+                            <GradientStop Color="#dce8ff" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
 
-				<!-- Cerrar sesion -->
-				<Button Text="Cerrar sesion"
+                <Button Text="Cerrar sesión"
                         Command="{Binding CerrarSesionCommand}"
                         BackgroundColor="#fff0f0"
                         TextColor="#c0392b"
                         FontSize="14" FontAttributes="Bold"
                         CornerRadius="14" HeightRequest="52"/>
 
-				<Label Text="Habitos Saludables v1.0.0"
-                       FontSize="11" TextColor="#b8d4c0"
-                       HorizontalTextAlignment="Center"
-                       Margin="0,4,0,0"/>
+                <Label Text="Hábitos Saludables v1.0.0"
+                       FontSize="11" TextColor="#a8c4e8"
+                       HorizontalTextAlignment="Center" Margin="0,4,0,0"/>
 
-			</VerticalStackLayout>
-		</ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
 
-	</Grid>
+    </Grid>
 </ContentPage>

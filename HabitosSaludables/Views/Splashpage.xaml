@@ -3,101 +3,109 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.SplashPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#0d2918">
+             BackgroundColor="#050d1a">
 
-    <AbsoluteLayout>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#050d1a" Offset="0.0"/>
+                <GradientStop Color="#0a1f3d" Offset="0.5"/>
+                <GradientStop Color="#071630" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
-        <!-- Forma geométrica superior derecha -->
-        <BoxView AbsoluteLayout.LayoutBounds="1, 0, 200, 200"
-                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                 BackgroundColor="#1a4d2e"
-                 Rotation="45"
-                 Margin="60,-60,0,0"/>
+        <AbsoluteLayout>
 
-        <!-- Círculo decorativo -->
-        <Ellipse AbsoluteLayout.LayoutBounds="0.05, 0.78, 140, 140"
-                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                 Fill="#1a3d24"
-                 Opacity="0.8"/>
+            <Ellipse AbsoluteLayout.LayoutBounds="1, 0, 280, 280"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     Fill="#1a3a6e"
+                     Opacity="0.5"
+                     Margin="0,-60,-60,0"/>
 
-        <Ellipse AbsoluteLayout.LayoutBounds="0.9, 0.6, 80, 80"
-                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                 Fill="#2a5e3a"
-                 Opacity="0.5"/>
+            <Ellipse AbsoluteLayout.LayoutBounds="0, 1, 200, 200"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     Fill="#0f2a54"
+                     Opacity="0.6"
+                     Margin="-40,0,0,40"/>
 
-        <!-- Contenido central -->
-        <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.48, 1, AutoSize"
-                             AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                             HorizontalOptions="Center"
-                             Spacing="0"
-                             Padding="40,0">
+            <Ellipse AbsoluteLayout.LayoutBounds="0.7, 0.55, 120, 120"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     Fill="#1e4a8a"
+                     Opacity="0.25"/>
 
-            <!-- Ícono pill moderno -->
-            <Border BackgroundColor="#1e5c34"
-                    StrokeThickness="1"
-                    Stroke="#2e7a48"
-                    HorizontalOptions="Center"
-                    WidthRequest="80"
-                    HeightRequest="80"
-                    Margin="0,0,0,28">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="22"/>
-                </Border.StrokeShape>
-                <Label Text="🌿"
-                       FontSize="38"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-            </Border>
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.46, 1, AutoSize"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                                 HorizontalOptions="Center"
+                                 Spacing="0"
+                                 Padding="40,0">
 
-            <Label Text="Hábitos"
-                   FontSize="44"
-                   FontAttributes="Bold"
-                   TextColor="#ffffff"
-                   HorizontalTextAlignment="Center"
-                   CharacterSpacing="-0.5"
-                   LineHeight="1"
-                   Margin="0,0,0,-6"/>
+                <Border HorizontalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        StrokeThickness="1.5"
+                        Stroke="#2e6abf"
+                        Margin="0,0,0,28">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1a3f7a" Offset="0.0"/>
+                            <GradientStop Color="#0d2654" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="💧"
+                           FontSize="38"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
 
-            <Label Text="Saludables"
-                   FontSize="44"
-                   FontAttributes="Bold"
-                   TextColor="#4ecb8d"
-                   HorizontalTextAlignment="Center"
-                   CharacterSpacing="-0.5"
-                   LineHeight="1"
-                   Margin="0,0,0,20"/>
+                <Label Text="Hábitos"
+                       FontSize="44"
+                       FontAttributes="Bold"
+                       TextColor="#ffffff"
+                       HorizontalTextAlignment="Center"
+                       CharacterSpacing="-0.5"
+                       LineHeight="1"
+                       Margin="0,0,0,-6"/>
 
-            <!-- Tagline pill -->
-            <Border BackgroundColor="#1a3d24"
-                    StrokeThickness="1"
-                    Stroke="#2a5e38"
-                    HorizontalOptions="Center"
-                    Padding="18,8">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="20"/>
-                </Border.StrokeShape>
-                <Label Text="TU BIENESTAR · CADA DÍA"
-                       FontSize="10"
-                       TextColor="#4ecb8d"
-                       CharacterSpacing="2"/>
-            </Border>
+                <Label Text="Saludables"
+                       FontSize="44"
+                       FontAttributes="Bold"
+                       TextColor="#4a9eff"
+                       HorizontalTextAlignment="Center"
+                       CharacterSpacing="-0.5"
+                       LineHeight="1"
+                       Margin="0,0,0,24" />
 
-        </VerticalStackLayout>
+                <Border HorizontalOptions="Center" Padding="18,8" StrokeThickness="1" Stroke="#1e4a8a">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#0d2654" Offset="0.0"/>
+                            <GradientStop Color="#122e66" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="TU BIENESTAR · CADA DÍA"
+                           FontSize="10" TextColor="#4a9eff" CharacterSpacing="2"/>
+                </Border>
 
-        <!-- Indicadores -->
-        <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.9, AutoSize, AutoSize"
-                               AbsoluteLayout.LayoutFlags="PositionProportional"
-                               Spacing="8">
-            <BoxView BackgroundColor="#4ecb8d"
-                     WidthRequest="24" HeightRequest="5"
-                     CornerRadius="3" VerticalOptions="Center"/>
-            <BoxView BackgroundColor="#1e4a2c"
-                     WidthRequest="5" HeightRequest="5"
-                     CornerRadius="3" VerticalOptions="Center"/>
-            <BoxView BackgroundColor="#1e4a2c"
-                     WidthRequest="5" HeightRequest="5"
-                     CornerRadius="3" VerticalOptions="Center"/>
-        </HorizontalStackLayout>
+            </VerticalStackLayout>
 
-    </AbsoluteLayout>
+            <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.9, AutoSize, AutoSize"
+                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   Spacing="8">
+                <BoxView WidthRequest="24" HeightRequest="5" CornerRadius="3" VerticalOptions="Center">
+                    <BoxView.Color>
+                        <Color>#4a9eff</Color>
+                    </BoxView.Color>
+                </BoxView>
+                <BoxView BackgroundColor="#0f2a54" WidthRequest="5" HeightRequest="5" CornerRadius="3" VerticalOptions="Center"/>
+                <BoxView BackgroundColor="#0f2a54" WidthRequest="5" HeightRequest="5" CornerRadius="3" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+        </AbsoluteLayout>
+    </Grid>
 </ContentPage>

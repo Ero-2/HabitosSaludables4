@@ -3,159 +3,146 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.LoginPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#f2faf5">
+             BackgroundColor="#f0f6ff">
 
     <Grid RowDefinitions="Auto,*">
 
-        <!-- Header con bloque geométrico verde oscuro -->
-        <Grid Grid.Row="0" BackgroundColor="#0d2918" Padding="24,54,24,32">
+        <!-- Header con degradado azul -->
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0a1f3d" Offset="0.0"/>
+                    <GradientStop Color="#1a3f7a" Offset="0.5"/>
+                    <GradientStop Color="#0f2a54" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
-            <!-- Forma decorativa -->
-            <Ellipse HorizontalOptions="End"
-                     VerticalOptions="Start"
-                     WidthRequest="120"
-                     HeightRequest="120"
-                     Fill="#1a4d2e"
-                     Margin="0,-30,-20,0"/>
+            <Ellipse HorizontalOptions="End" VerticalOptions="Start"
+                     WidthRequest="140" HeightRequest="140"
+                     Margin="0,-30,-20,0" Opacity="0.5">
+                <Ellipse.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1e4a8a" Offset="0.0"/>
+                        <GradientStop Color="#2e6abf" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse HorizontalOptions="End" VerticalOptions="End"
+                     WidthRequest="70" HeightRequest="70"
+                     Opacity="0.3" Margin="0,0,40,10">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#4a9eff" Offset="0.0"/>
+                        <GradientStop Color="#2e6abf" Offset="1.0"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
 
-            <Ellipse HorizontalOptions="End"
-                     VerticalOptions="End"
-                     WidthRequest="60"
-                     HeightRequest="60"
-                     Fill="#2a6644"
-                     Opacity="0.4"
-                     Margin="0,0,40,10"/>
+            <VerticalStackLayout Padding="24,54,24,32" Spacing="8">
 
-            <VerticalStackLayout Spacing="8">
-
-                <!-- Botón regresar -->
-                <Border BackgroundColor="#1a3d24"
-                        StrokeThickness="1"
-                        Stroke="#2a5e38"
-                        WidthRequest="36"
-                        HeightRequest="36"
-                        HorizontalOptions="Start"
-                        Margin="0,0,0,12">
+                <Border StrokeThickness="1" Stroke="#1e4a8a"
+                        WidthRequest="36" HeightRequest="36"
+                        HorizontalOptions="Start" Margin="0,0,0,12">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10"/>
                     </Border.StrokeShape>
-                    <Label Text="‹"
-                           FontSize="20"
-                           TextColor="#4ecb8d"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"/>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#0f2a54" Offset="0.0"/>
+                            <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="&#8249;" FontSize="20" TextColor="#4a9eff"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Border>
 
-                <!-- Ícono pequeño -->
                 <HorizontalStackLayout Spacing="8" Margin="0,0,0,6">
-                    <Label Text="🌿" FontSize="18" VerticalOptions="Center"/>
-                    <Label Text="Hábitos Saludables"
-                           FontSize="11"
-                           TextColor="#4ecb8d"
-                           FontAttributes="Bold"
-                           VerticalOptions="Center"/>
+                    <Label Text="💧" FontSize="18" VerticalOptions="Center"/>
+                    <Label Text="Hábitos Saludables" FontSize="11"
+                           TextColor="#4a9eff" FontAttributes="Bold" VerticalOptions="Center"/>
                 </HorizontalStackLayout>
 
                 <Label Text="Bienvenido&#10;de vuelta"
-                       FontSize="30"
-                       FontAttributes="Bold"
-                       TextColor="#ffffff"
-                       LineHeight="1.15"
-                       CharacterSpacing="-0.3"/>
+                       FontSize="30" FontAttributes="Bold"
+                       TextColor="#ffffff" LineHeight="1.15" CharacterSpacing="-0.3"/>
 
                 <Label Text="Ingresa para continuar tu racha"
-                       FontSize="12"
-                       TextColor="#4a7a58"/>
+                       FontSize="12" TextColor="#4a6a9a"/>
 
             </VerticalStackLayout>
         </Grid>
 
         <!-- Formulario -->
-        <ScrollView Grid.Row="1" BackgroundColor="#f2faf5">
+        <ScrollView Grid.Row="1" BackgroundColor="#f0f6ff">
             <VerticalStackLayout Padding="24,28,24,40" Spacing="20">
 
-                <!-- Campo correo -->
                 <VerticalStackLayout Spacing="8">
                     <Label Text="CORREO ELECTRÓNICO"
-                           FontSize="10"
-                           TextColor="#8ab89a"
-                           CharacterSpacing="1.8"
-                           FontAttributes="Bold"/>
+                           FontSize="10" TextColor="#7a9abe"
+                           CharacterSpacing="1.8" FontAttributes="Bold"/>
                     <Border BackgroundColor="#ffffff"
-                            StrokeThickness="1.5"
-                            Stroke="#c8e4d0"
-                            HeightRequest="54">
+                            StrokeThickness="1.5" Stroke="#b8d0f0" HeightRequest="54">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="14"/>
                         </Border.StrokeShape>
                         <Entry x:Name="emailEntry"
-                               Placeholder="tu@correo.com"
-                               Keyboard="Email"
+                               Placeholder="tu@correo.com" Keyboard="Email"
                                Text="{Binding Email}"
-                               PlaceholderColor="#b8d4c0"
-                               TextColor="#0d2918"
-                               FontSize="14"
-                               BackgroundColor="Transparent"
-                               Margin="8,0"/>
+                               PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
+                               FontSize="14" BackgroundColor="Transparent" Margin="8,0"/>
                     </Border>
                 </VerticalStackLayout>
 
-                <!-- Campo contraseña -->
                 <VerticalStackLayout Spacing="8">
                     <Label Text="CONTRASEÑA"
-                           FontSize="10"
-                           TextColor="#8ab89a"
-                           CharacterSpacing="1.8"
-                           FontAttributes="Bold"/>
+                           FontSize="10" TextColor="#7a9abe"
+                           CharacterSpacing="1.8" FontAttributes="Bold"/>
                     <Border BackgroundColor="#ffffff"
-                            StrokeThickness="1.5"
-                            Stroke="#c8e4d0"
-                            HeightRequest="54">
+                            StrokeThickness="1.5" Stroke="#b8d0f0" HeightRequest="54">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="14"/>
                         </Border.StrokeShape>
                         <Entry x:Name="contrasenaEntry"
-                               Placeholder="••••••••"
-                               IsPassword="True"
+                               Placeholder="••••••••" IsPassword="True"
                                Text="{Binding Contrasena}"
-                               PlaceholderColor="#b8d4c0"
-                               TextColor="#0d2918"
-                               FontSize="14"
-                               BackgroundColor="Transparent"
-                               Margin="8,0"/>
+                               PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
+                               FontSize="14" BackgroundColor="Transparent" Margin="8,0"/>
                     </Border>
                 </VerticalStackLayout>
 
                 <Label Text="¿Olvidaste tu contraseña?"
-                       FontSize="12"
-                       TextColor="#3a7a52"
-                       HorizontalTextAlignment="End"
-                       FontAttributes="Bold"/>
+                       FontSize="12" TextColor="#2a5aaa"
+                       HorizontalTextAlignment="End" FontAttributes="Bold"/>
 
-                <Button Text="Ingresar"
-                        x:Name="LoginBtn"
-                        Clicked="OnLoginClicked"
-                        BackgroundColor="#0d2918"
-                        TextColor="#4ecb8d"
-                        FontSize="15"
-                        FontAttributes="Bold"
-                        CornerRadius="16"
-                        HeightRequest="56"
-                        Margin="0,6,0,0"/>
+                <Border StrokeThickness="0" HeightRequest="56" Margin="0,6,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#1a4abf" Offset="0.0"/>
+                            <GradientStop Color="#2e6aef" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Text="Ingresar"
+                            x:Name="LoginBtn"
+                            Clicked="OnLoginClicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#ffffff"
+                            FontSize="15" FontAttributes="Bold"/>
+                </Border>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="12" Margin="0,4">
-                    <BoxView BackgroundColor="#c8e4d0" HeightRequest="1" WidthRequest="55" VerticalOptions="Center"/>
-                    <Label Text="o" FontSize="12" TextColor="#a0c4a8" VerticalOptions="Center"/>
-                    <BoxView BackgroundColor="#c8e4d0" HeightRequest="1" WidthRequest="55" VerticalOptions="Center"/>
+                    <BoxView BackgroundColor="#b8d0f0" HeightRequest="1" WidthRequest="55" VerticalOptions="Center"/>
+                    <Label Text="o" FontSize="12" TextColor="#8ab0d8" VerticalOptions="Center"/>
+                    <BoxView BackgroundColor="#b8d0f0" HeightRequest="1" WidthRequest="55" VerticalOptions="Center"/>
                 </HorizontalStackLayout>
 
-                <Label x:Name="RegistroBtn"
-                       FontSize="13"
-                       HorizontalTextAlignment="Center">
+                <Label x:Name="RegistroBtn" FontSize="13" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="¿No tienes cuenta? " TextColor="#8ab89a" FontSize="13"/>
-                            <Span Text="Regístrate gratis" TextColor="#0d2918" FontSize="13" FontAttributes="Bold"/>
+                            <Span Text="¿No tienes cuenta? " TextColor="#7a9abe" FontSize="13"/>
+                            <Span Text="Regístrate gratis" TextColor="#0a1f3d" FontSize="13" FontAttributes="Bold"/>
                         </FormattedString>
                     </Label.FormattedText>
                     <Label.GestureRecognizers>

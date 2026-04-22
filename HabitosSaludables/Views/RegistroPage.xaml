@@ -3,145 +3,225 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HabitosSaludables.Views.RegistroPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#f2faf5">
+             BackgroundColor="#f0f6ff">
 
     <Grid RowDefinitions="Auto,*">
 
-        <Grid Grid.Row="0" BackgroundColor="#0d2918" Padding="24,54,24,32">
+        <!-- Header con gradientes -->
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0a1f3d" Offset="0.0"/>
+                    <GradientStop Color="#1a3f7a" Offset="0.6"/>
+                    <GradientStop Color="#0d2a5e" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
-            <BoxView BackgroundColor="#1a4d2e"
-                     WidthRequest="160" HeightRequest="160"
+            <!-- Elementos decorativos -->
+            <BoxView WidthRequest="170" HeightRequest="170"
                      HorizontalOptions="End" VerticalOptions="Start"
-                     Rotation="20" CornerRadius="30"
-                     Margin="0,-60,-40,0"/>
+                     Rotation="20" CornerRadius="32"
+                     Margin="0,-60,-40,0" Opacity="0.5">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#1e4a8a" Offset="0.0"/>
+                        <GradientStop Color="#2e6abf" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
 
             <Ellipse WidthRequest="80" HeightRequest="80"
-                     Fill="#2a6644" Opacity="0.35"
                      HorizontalOptions="Start" VerticalOptions="End"
-                     Margin="10,0,0,10"/>
+                     Margin="10,0,0,10" Opacity="0.3">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#4a9eff" Offset="0.0"/>
+                        <GradientStop Color="#1a4abf" Offset="1.0"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
 
-            <VerticalStackLayout Spacing="10">
+            <!-- Contenido del header -->
+            <VerticalStackLayout Padding="24,40,24,24" Spacing="12">
 
-                <Border BackgroundColor="#1a3d24"
-                        StrokeThickness="1" Stroke="#2a5e38"
-                        WidthRequest="36" HeightRequest="36"
-                        HorizontalOptions="Start" Margin="0,0,0,8">
+                <!-- Botón regresar -->
+                <Border StrokeThickness="1" Stroke="#1e4a8a"
+                        WidthRequest="40" HeightRequest="40"
+                        HorizontalOptions="Start" Margin="0,0,0,4">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10"/>
+                        <RoundRectangle CornerRadius="12"/>
                     </Border.StrokeShape>
-                    <Label Text="&#8249;" FontSize="20" TextColor="#4ecb8d"
-                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#0f2a54" Offset="0.0"/>
+                            <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="&#8249;" FontSize="24" TextColor="#4a9eff"
+                           HorizontalOptions="Center" VerticalOptions="Center"
+                           Margin="0,-2,0,0"/>
                 </Border>
 
-                <Border BackgroundColor="#1a4d2e"
-                        StrokeThickness="1" Stroke="#2e7a48"
-                        HorizontalOptions="Start" Padding="10,7">
+                <!-- 🔥 ICONO GRANDE CENTRAL -->
+                <Border StrokeThickness="0" 
+                        WidthRequest="120" HeightRequest="120"
+                        HorizontalOptions="Center"
+                        Margin="0,8,0,16">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#1e4a8a" Offset="0.0"/>
+                            <GradientStop Color="#4a9eff" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="💧" 
+                           FontSize="64" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center"
+                           Margin="0,6,0,0"/>
+                </Border>
+
+                <!-- Logo compacto -->
+                <Border StrokeThickness="0" HorizontalOptions="Center" Padding="12,8">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10"/>
                     </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#0f2a54" Offset="0.0"/>
+                            <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                     <HorizontalStackLayout Spacing="8">
-                        <Label Text="&#127807;" FontSize="16" VerticalOptions="Center"/>
+                        <Label Text="✨" FontSize="14" VerticalOptions="Center"/>
                         <VerticalStackLayout Spacing="1" VerticalOptions="Center">
-                            <Label Text="Habitos Saludables"
-                                   FontSize="12" FontAttributes="Bold" TextColor="#4ecb8d"/>
+                            <Label Text="Hábitos Saludables"
+                                   FontSize="13" FontAttributes="Bold" TextColor="#4a9eff"/>
                             <Label Text="Tu bienestar diario"
-                                   FontSize="9" TextColor="#3a7a52"/>
+                                   FontSize="10" TextColor="#5a8aba"/>
                         </VerticalStackLayout>
                     </HorizontalStackLayout>
                 </Border>
 
                 <Label Text="Crea tu cuenta"
-                       FontSize="30" FontAttributes="Bold"
+                       FontSize="32" FontAttributes="Bold"
                        TextColor="#ffffff" CharacterSpacing="-0.3"
-                       Margin="0,6,0,0"/>
+                       HorizontalTextAlignment="Center"
+                       Margin="0,8,0,0"/>
 
-                <Label Text="Gratis - Rapido - Sin complicaciones"
-                       FontSize="12" TextColor="#4a7a58"/>
+                <Label Text="Gratis · Rápido · Sin complicaciones"
+                       FontSize="13" TextColor="#6a9ac4"
+                       HorizontalTextAlignment="Center"/>
 
             </VerticalStackLayout>
         </Grid>
 
-        <ScrollView Grid.Row="1" BackgroundColor="#f2faf5">
-            <VerticalStackLayout Padding="24,28,24,40" Spacing="18">
+        <!-- Formulario de registro -->
+        <ScrollView Grid.Row="1" BackgroundColor="#f0f6ff">
+            <VerticalStackLayout Padding="24,24,24,40" Spacing="18">
 
+                <!-- Nombre -->
                 <VerticalStackLayout Spacing="8">
                     <Label Text="NOMBRE COMPLETO"
-                           FontSize="10" TextColor="#8ab89a"
+                           FontSize="10" TextColor="#7a9abe"
                            CharacterSpacing="1.8" FontAttributes="Bold"/>
                     <Border BackgroundColor="#ffffff"
-                            StrokeThickness="1.5" Stroke="#c8e4d0" HeightRequest="54">
+                            StrokeThickness="1.5" Stroke="#b8d0f0" HeightRequest="54">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="14"/>
                         </Border.StrokeShape>
                         <Entry x:Name="nombreEntry"
-                               Placeholder="Ej. Carlos Garcia"
+                               Placeholder="Ej. Carlos García"
                                Text="{Binding Nombre}"
-                               PlaceholderColor="#b8d4c0" TextColor="#0d2918"
+                               PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
                                FontSize="14" BackgroundColor="Transparent" Margin="8,0"/>
                     </Border>
                 </VerticalStackLayout>
 
+                <!-- Email -->
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="CORREO ELECTRONICO"
-                           FontSize="10" TextColor="#8ab89a"
+                    <Label Text="CORREO ELECTRÓNICO"
+                           FontSize="10" TextColor="#7a9abe"
                            CharacterSpacing="1.8" FontAttributes="Bold"/>
                     <Border BackgroundColor="#ffffff"
-                            StrokeThickness="1.5" Stroke="#c8e4d0" HeightRequest="54">
+                            StrokeThickness="1.5" Stroke="#b8d0f0" HeightRequest="54">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="14"/>
                         </Border.StrokeShape>
                         <Entry x:Name="emailEntry"
-                               Placeholder="tu@correo.com"
-                               Keyboard="Email" Text="{Binding Email}"
-                               PlaceholderColor="#b8d4c0" TextColor="#0d2918"
+                               Placeholder="tu@correo.com" Keyboard="Email"
+                               Text="{Binding Email}"
+                               PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
                                FontSize="14" BackgroundColor="Transparent" Margin="8,0"/>
                     </Border>
                 </VerticalStackLayout>
 
+                <!-- Contraseña -->
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="CONTRASENA"
-                           FontSize="10" TextColor="#8ab89a"
+                    <Label Text="CONTRASEÑA"
+                           FontSize="10" TextColor="#7a9abe"
                            CharacterSpacing="1.8" FontAttributes="Bold"/>
                     <Border BackgroundColor="#ffffff"
-                            StrokeThickness="1.5" Stroke="#c8e4d0" HeightRequest="54">
+                            StrokeThickness="1.5" Stroke="#b8d0f0" HeightRequest="54">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="14"/>
                         </Border.StrokeShape>
                         <Entry x:Name="contrasenaEntry"
-                               Placeholder="Minimo 8 caracteres"
+                               Placeholder="Mínimo 8 caracteres"
                                IsPassword="True" Text="{Binding Contrasena}"
-                               PlaceholderColor="#b8d4c0" TextColor="#0d2918"
+                               PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
                                FontSize="14" BackgroundColor="Transparent" Margin="8,0"/>
                     </Border>
                 </VerticalStackLayout>
 
-                <Border BackgroundColor="#e0f2e8" StrokeThickness="0" Padding="14,10">
+                <!-- Info de seguridad con icono 🔒 -->
+                <Border StrokeThickness="0" Padding="16,12" HorizontalOptions="Center">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
+                        <RoundRectangle CornerRadius="14"/>
                     </Border.StrokeShape>
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="&#128274;" FontSize="14" VerticalOptions="Center"/>
-                        <Label Text="Tu informacion esta segura y nunca sera compartida."
-                               FontSize="11" TextColor="#3a7a52"
-                               VerticalOptions="Center" LineHeight="1.4"/>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#dce8ff" Offset="0.0"/>
+                            <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                        <!-- 🔥 ICONO DE SEGURIDAD GRANDE -->
+                        <Label Text="🔒" FontSize="28" VerticalOptions="Center"/>
+                        <Label Text="Tu información está segura y nunca será compartida."
+                               FontSize="12" TextColor="#1a3a7a"
+                               VerticalOptions="Center" LineHeight="1.4"
+                               WidthRequest="220"/>
                     </HorizontalStackLayout>
                 </Border>
 
-                <Button Text="Crear cuenta"
-                        x:Name="RegistrarBtn"
-                        Clicked="OnRegisterClicked"
-                        BackgroundColor="#0d2918"
-                        TextColor="#4ecb8d"
-                        FontSize="15" FontAttributes="Bold"
-                        CornerRadius="16" HeightRequest="56"
-                        Margin="0,4,0,0"/>
+                <!-- Botón Registrar -->
+                <Border StrokeThickness="0" HeightRequest="58" Margin="0,8,0,8">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#1a4abf" Offset="0.0"/>
+                            <GradientStop Color="#2e6aef" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Text="Crear cuenta"
+                            x:Name="RegistrarBtn"
+                            Clicked="OnRegisterClicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#ffffff"
+                            FontSize="16" FontAttributes="Bold"/>
+                </Border>
 
-                <Label x:Name="LoginBtn"
-                       FontSize="13" HorizontalTextAlignment="Center">
+                <!-- Link a Login -->
+                <Label x:Name="LoginBtn" FontSize="14" HorizontalTextAlignment="Center" Margin="0,4,0,0">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Ya tienes cuenta? " TextColor="#8ab89a" FontSize="13"/>
-                            <Span Text="Inicia sesion" TextColor="#0d2918" FontSize="13" FontAttributes="Bold"/>
+                            <Span Text="¿Ya tienes cuenta? " TextColor="#7a9abe" FontSize="14"/>
+                            <Span Text="Inicia sesión" TextColor="#0a1f3d" FontSize="14" FontAttributes="Bold"/>
                         </FormattedString>
                     </Label.FormattedText>
                     <Label.GestureRecognizers>

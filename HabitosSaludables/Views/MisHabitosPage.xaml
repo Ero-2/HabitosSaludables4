@@ -4,150 +4,156 @@
              xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
              x:Class="HabitosSaludables.Views.MisHabitosPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#f2faf5">
+             BackgroundColor="#f0f6ff">
 
     <Grid RowDefinitions="Auto,*">
 
-        <!-- Header verde oscuro -->
-        <Grid Grid.Row="0" BackgroundColor="#0d2918">
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0a1f3d" Offset="0.0"/>
+                    <GradientStop Color="#1a3f7a" Offset="0.6"/>
+                    <GradientStop Color="#0f2a54" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
             <Ellipse HorizontalOptions="End" VerticalOptions="Start"
-                     WidthRequest="130" HeightRequest="130"
-                     Fill="#1a4d2e" Margin="0,-30,-20,0"/>
+                     WidthRequest="140" HeightRequest="140"
+                     Margin="0,-30,-20,0" Opacity="0.4">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#2e6abf" Offset="0.0"/>
+                        <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
             <Ellipse HorizontalOptions="Start" VerticalOptions="End"
-                     WidthRequest="70" HeightRequest="70"
-                     Fill="#1e3d28" Opacity="0.5" Margin="30,0,0,-5"/>
+                     WidthRequest="75" HeightRequest="75"
+                     Opacity="0.25" Margin="30,0,0,-5">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#4a9eff" Offset="0.0"/>
+                        <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
 
-            <Grid Padding="22,52,22,24">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
+            <Grid Padding="22,52,22,24" ColumnDefinitions="*,Auto">
                 <VerticalStackLayout Grid.Column="0" Spacing="4">
                     <Label Text="MI COLECCIÓN"
-                           FontSize="9" TextColor="#4ecb8d"
+                           FontSize="9" TextColor="#4a9eff"
                            CharacterSpacing="2.2" FontAttributes="Bold"/>
                     <Label Text="Mis Hábitos"
                            FontSize="26" FontAttributes="Bold" TextColor="#ffffff"
                            CharacterSpacing="-0.3"/>
                 </VerticalStackLayout>
 
-                <!-- Botón agregar -->
                 <Border Grid.Column="1"
-                        BackgroundColor="#4ecb8d"
                         StrokeThickness="0"
-                        VerticalOptions="Center"
-                        Padding="16,10">
+                        VerticalOptions="Center" Padding="16,10">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="14"/>
                     </Border.StrokeShape>
-                    <Label Text="+ Nuevo"
-                           FontSize="12" FontAttributes="Bold" TextColor="#0d2918"/>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#2e6aef" Offset="0.0"/>
+                            <GradientStop Color="#4a9eff" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Label Text="+ Nuevo" FontSize="12" FontAttributes="Bold" TextColor="#ffffff"/>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AgregarNuevoHabitoCommand}"/>
                     </Border.GestureRecognizers>
                 </Border>
-
             </Grid>
         </Grid>
 
-        <!-- Lista -->
         <RefreshView Grid.Row="1"
                      IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
                      Command="{Binding LoadHabitosCommand}"
-                     BackgroundColor="#f2faf5">
-
+                     BackgroundColor="#f0f6ff">
             <CollectionView ItemsSource="{Binding Habitos}" BackgroundColor="Transparent">
                 <CollectionView.Header>
                     <BoxView HeightRequest="14" BackgroundColor="Transparent"/>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-
                         <Border Margin="18,0,18,10"
                                 BackgroundColor="#ffffff"
-                                StrokeThickness="1.5"
-                                Stroke="#d8eede">
+                                StrokeThickness="1.5" Stroke="#c8d8f8">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="16"/>
                             </Border.StrokeShape>
-                            <Grid Padding="14,14"
-                                  ColumnDefinitions="46,*,36,36"
-                                  ColumnSpacing="4">
+                            <Grid Padding="14,14" ColumnDefinitions="46,*,36,36" ColumnSpacing="4">
 
-                                <!-- Icono -->
                                 <Border Grid.Column="0"
-                                        BackgroundColor="#e0f2e8"
                                         StrokeThickness="0"
-                                        WidthRequest="38" HeightRequest="38"
-                                        VerticalOptions="Center">
+                                        WidthRequest="38" HeightRequest="38" VerticalOptions="Center">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="11"/>
                                     </Border.StrokeShape>
-                                    <Label Text="{Binding Icono}"
-                                           FontSize="20"
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                            <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Label Text="{Binding Icono}" FontSize="20"
                                            HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </Border>
 
-                                <!-- Info -->
                                 <VerticalStackLayout Grid.Column="1"
-                                                     VerticalOptions="Center"
-                                                     Spacing="3" Margin="10,0">
+                                                     VerticalOptions="Center" Spacing="3" Margin="10,0">
                                     <Label Text="{Binding Nombre}"
-                                           FontSize="14" FontAttributes="Bold" TextColor="#0d2918"/>
+                                           FontSize="14" FontAttributes="Bold" TextColor="#0a1f3d"/>
                                     <HorizontalStackLayout Spacing="6">
-                                        <Border BackgroundColor="#e0f2e8"
-                                                StrokeThickness="0"
-                                                Padding="6,2">
+                                        <Border StrokeThickness="0" Padding="6,2">
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="6"/>
                                             </Border.StrokeShape>
-                                            <Label Text="{Binding Categoria}"
-                                                   FontSize="9" TextColor="#3a7a52"/>
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                                    <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Label Text="{Binding Categoria}" FontSize="9" TextColor="#2a5aaa"/>
                                         </Border>
-                                        <Label Text="{Binding RachaActual, StringFormat='🔥 {0} días'}"
-                                               FontSize="10" TextColor="#8ab89a" VerticalOptions="Center"/>
+                                        <Label Text="{Binding RachaActual, StringFormat='&#128293; {0} días'}"
+                                               FontSize="10" TextColor="#7a9abe" VerticalOptions="Center"/>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
 
-                                <!-- Check -->
                                 <Border Grid.Column="2"
                                         BackgroundColor="{Binding CompletadoHoy, Converter={StaticResource BoolToColorConverter}}"
-                                        StrokeThickness="1.5" Stroke="#b0d8bc"
-                                        WidthRequest="34" HeightRequest="34"
-                                        VerticalOptions="Center">
+                                        StrokeThickness="1.5" Stroke="#a8c4e8"
+                                        WidthRequest="34" HeightRequest="34" VerticalOptions="Center">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="10"/>
                                     </Border.StrokeShape>
                                     <Button BackgroundColor="Transparent"
                                             TextColor="{Binding CompletadoHoy, Converter={StaticResource BoolToCheckColorConverter}}"
-                                            FontSize="14" FontAttributes="Bold"
-                                            Text="✓"
+                                            FontSize="14" FontAttributes="Bold" Text="&#10003;"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MisHabitosViewModel}}, Path=ToggleCompletadoCommand}"
                                             CommandParameter="{Binding .}"
                                             IsEnabled="{Binding CompletadoHoy, Converter={StaticResource InverseBoolConverter}}"
                                             Padding="0" WidthRequest="34" HeightRequest="34"/>
                                 </Border>
 
-                                <!-- Eliminar -->
                                 <Button Grid.Column="3"
-                                        Text="🗑"
+                                        Text="&#128465;"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MisHabitosViewModel}}, Path=EliminarHabitoCommand}"
                                         CommandParameter="{Binding .}"
                                         BackgroundColor="Transparent"
-                                        TextColor="#b8d4bc"
-                                        FontSize="15"
+                                        TextColor="#a8c4e8" FontSize="15"
                                         WidthRequest="34" HeightRequest="34"
                                         Padding="0" VerticalOptions="Center"/>
 
                             </Grid>
                         </Border>
-
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </RefreshView>
 
     </Grid>

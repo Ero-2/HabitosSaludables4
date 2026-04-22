@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using HabitosSaludables.Models;
 using HabitosSaludables.Services;
-using HabitosSaludables.Messages; // Asegúrate de tener creada la clase del mensaje
+ // Asegúrate de tener creada la clase del mensaje
 using System.Collections.ObjectModel;
 
 namespace HabitosSaludables.ViewModels
@@ -18,21 +18,7 @@ namespace HabitosSaludables.ViewModels
         [ObservableProperty]
         private bool _isRefreshing;
 
-        public MisHabitosViewModel(DatabaseService databaseService)
-        {
-            _databaseService = databaseService;
-
-            // --- ESTA ES LA SOLUCIÓN ---
-            // Nos suscribimos al mensaje de "HabitosActualizados"
-            WeakReferenceMessenger.Default.Register<HabitosActualizadosMessage>(this, (r, m) =>
-            {
-                // Ejecutamos la recarga en el hilo principal
-                MainThread.BeginInvokeOnMainThread(async () => await LoadHabitos());
-            });
-
-            // Carga inicial al abrir la app
-            LoadHabitosCommand.Execute(null);
-        }
+        
 
         [RelayCommand]
         public async Task LoadHabitos()
