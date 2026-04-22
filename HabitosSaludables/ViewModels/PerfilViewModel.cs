@@ -1,71 +1,93 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HabitosSaludables.Models;
+using HabitosSaludables.Models;  // 👈 Aquí está el modelo User
+using HabitosSaludables.Services;
 using System.Collections.ObjectModel;
 
 namespace HabitosSaludables.ViewModels
 {
     public partial class PerfilViewModel : ObservableObject
     {
+        private readonly DatabaseService _databaseService;
+        private User _usuarioActual;  // 👈 CAMBIADO: Usuario → User
+
         // ── Datos del usuario ──────────────────────────────────────────────
         [ObservableProperty]
-        private string nombreUsuario = "Carlos García";
+        private string _nombreUsuario = string.Empty;
 
         [ObservableProperty]
-        private string email = "carlos@correo.com";
+        private string _email = string.Empty;
 
         [ObservableProperty]
-        private string iniciales = "CG";
+        private string _iniciales = "U";
 
         [ObservableProperty]
-        private string nivelUsuario = "🌱 Principiante";
+        private string _nivelUsuario = "🌱 Principiante";
 
         // ── Estadísticas ───────────────────────────────────────────────────
         [ObservableProperty]
-        private int totalHabitos = 0;
+        private int _totalHabitos = 0;
 
         [ObservableProperty]
-        private int rachaMaxima = 0;
+        private int _rachaMaxima = 0;
 
         [ObservableProperty]
-        private int diasActivo = 0;
+        private int _diasActivo = 0;
 
         [ObservableProperty]
-        private int metaDiaria = 3;
+        private int _metaDiaria = 3;
 
         // ── Configuración ──────────────────────────────────────────────────
         [ObservableProperty]
-        private bool notificacionesActivas = true;
+        private bool _notificacionesActivas = true;
 
         [ObservableProperty]
-        private bool isLoading;
+        private bool _isLoading;
 
         // ── Logros ─────────────────────────────────────────────────────────
         public ObservableCollection<Logro> Logros { get; } = new();
 
         // ──────────────────────────────────────────────────────────────────
-        public PerfilViewModel()
+        public PerfilViewModel(DatabaseService databaseService)
         {
-            CargarDatosMock();
+            _databaseService = databaseService;
         }
 
-        // ── Datos de prueba (reemplazar con servicios reales después) ──────
-        private void CargarDatosMock()
-        {
-            TotalHabitos = 4;
-            RachaMaxima = 7;
-            DiasActivo = 12;
-            ActualizarNivel();
-            CargarLogros();
-        }
-
-        [RelayCommand]
-        public async Task CargarPerfilAsync()
+        // 🔄 MÉTODO PRINCIPAL: Cargar datos del usuario logueado
+        public async Task CargarDatosUsuarioAsync()
         {
             IsLoading = true;
             try
             {
-                await Task.Delay(300);
+                // Obtener ID del usuario desde Preferences (guardado al hacer login)
+                var userId = Preferences.Get("usuario_id", 0);
+
+                if (userId > 0 && _databaseService != null)
+                {
+                    // 👇 CAMBIADO: GetUserById → GetUserByIdAsync (o implementar el método)
+                    _usuarioActual = await _databaseService.GetUserById(userId);
+
+                    if (_usuarioActual != null)
+                    {
+                        // Asignar datos reales a las propiedades
+                        NombreUsuario = _usuarioActual.Name ?? "Usuario";
+                        Email = _usuarioActual.Email ?? string.Empty;
+                        Iniciales = ObtenerIniciales(_usuarioActual.Name);
+
+                        // Cargar estadísticas reales
+                        await CargarEstadisticasRealesAsync();
+                    }
+                }
+                else
+                {
+                    // Si no hay usuario logueado, usar datos mock o redirigir
+                    CargarDatosMock();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Logging opcional
+                System.Diagnostics.Debug.WriteLine($"Error cargando perfil: {ex.Message}");
                 CargarDatosMock();
             }
             finally
@@ -74,6 +96,47 @@ namespace HabitosSaludables.ViewModels
             }
         }
 
+        // 📊 Cargar estadísticas desde la base de datos
+        private async Task CargarEstadisticasRealesAsync()
+        {
+            if (_usuarioActual == null || _databaseService == null) return;
+
+            try
+            {
+                // 👇 Estos métodos deben existir en DatabaseService
+                TotalHabitos = await _databaseService.GetTotalHabitosByUser(_usuarioActual.Id);
+                RachaMaxima = await _databaseService.GetRachaMaxima(_usuarioActual.Id);
+                DiasActivo = await _databaseService.GetDiasActivos(_usuarioActual.Id);
+
+                // Actualizar nivel y logros con datos reales
+                ActualizarNivel();
+                CargarLogros();
+            }
+            catch
+            {
+                // Fallback a valores por defecto si hay error
+                TotalHabitos = 0;
+                RachaMaxima = 0;
+                DiasActivo = 0;
+                ActualizarNivel();
+                CargarLogros();
+            }
+        }
+
+        // 🎭 Datos mock para desarrollo/testing
+        private void CargarDatosMock()
+        {
+            NombreUsuario = "Usuario Invitado";
+            Email = "invitado@ejemplo.com";
+            Iniciales = "UI";
+            TotalHabitos = 0;
+            RachaMaxima = 0;
+            DiasActivo = 0;
+            ActualizarNivel();
+            CargarLogros();
+        }
+
+        // 🏆 Actualizar nivel según estadísticas
         private void ActualizarNivel()
         {
             NivelUsuario = RachaMaxima switch
@@ -86,6 +149,7 @@ namespace HabitosSaludables.ViewModels
             };
         }
 
+        // 🎖️ Cargar logros con estado real
         private void CargarLogros()
         {
             Logros.Clear();
@@ -95,6 +159,8 @@ namespace HabitosSaludables.ViewModels
             Logros.Add(new Logro { Titulo = "Coleccionista", Emoji = "📚", Descripcion = "5 hábitos activos", Desbloqueado = TotalHabitos >= 5 });
             Logros.Add(new Logro { Titulo = "Leyenda", Emoji = "🏆", Descripcion = "Racha de 90 días", Desbloqueado = RachaMaxima >= 90 });
         }
+
+        // ── COMANDOS ───────────────────────────────────────────────────────
 
         [RelayCommand]
         private async Task EditarPerfilAsync()
@@ -150,18 +216,27 @@ namespace HabitosSaludables.ViewModels
 
             if (confirmar)
             {
+                // Limpiar preferences del usuario
+                Preferences.Remove("usuario_id");
                 Preferences.Remove("usuario_token");
-                await Shell.Current.GoToAsync("//bienvenida");
+                Preferences.Remove("usuario_email");
+
+                // Redirigir a pantalla de bienvenida/login
+                await Shell.Current.GoToAsync("//LoginPage");
             }
         }
 
+        // 🔤 Helper para obtener iniciales del nombre
         public static string ObtenerIniciales(string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre)) return "U";
+
             var partes = nombre.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            return partes.Length >= 2
-                ? $"{partes[0][0]}{partes[1][0]}".ToUpper()
-                : partes[0][0].ToString().ToUpper();
+
+            if (partes.Length == 0) return "U";
+            if (partes.Length == 1) return partes[0][0].ToString().ToUpper();
+
+            return $"{partes[0][0]}{partes[1][0]}".ToUpper();
         }
     }
 }

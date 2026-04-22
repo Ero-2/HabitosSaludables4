@@ -44,7 +44,7 @@
             <!-- Contenido del header -->
             <VerticalStackLayout Padding="24,40,24,24" Spacing="12">
 
-                <!-- Botón regresar -->
+                <!-- 🔙 Botón regresar (FUNCIONAL) -->
                 <Border StrokeThickness="1" Stroke="#1e4a8a"
                         WidthRequest="40" HeightRequest="40"
                         HorizontalOptions="Start" Margin="0,0,0,4">
@@ -60,6 +60,9 @@
                     <Label Text="&#8249;" FontSize="24" TextColor="#4a9eff"
                            HorizontalOptions="Center" VerticalOptions="Center"
                            Margin="0,-2,0,0"/>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackButtonClicked"/>
+                    </Border.GestureRecognizers>
                 </Border>
 
                 <!-- 🔥 ICONO GRANDE CENTRAL -->
@@ -188,7 +191,6 @@
                         </LinearGradientBrush>
                     </Border.Background>
                     <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
-                        <!-- 🔥 ICONO DE SEGURIDAD GRANDE -->
                         <Label Text="🔒" FontSize="28" VerticalOptions="Center"/>
                         <Label Text="Tu información está segura y nunca será compartida."
                                FontSize="12" TextColor="#1a3a7a"

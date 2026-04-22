@@ -1,13 +1,24 @@
-﻿using HabitosSaludables.ViewModels;
+﻿using HabitosSaludables.Services;
+using HabitosSaludables.ViewModels;
 
 namespace HabitosSaludables.Views
 {
-    public partial class PerfilPage : ContentPage   // 👈 partial + ContentPage
+    public partial class PerfilPage : ContentPage
     {
-        public PerfilPage()
+        private readonly PerfilViewModel _viewModel;
+
+        // 👇 Constructor con inyección de dependencias
+        public PerfilPage(PerfilViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = new PerfilViewModel();
+            BindingContext = _viewModel = viewModel;
+        }
+
+        // 👇 Cargar datos cuando la página aparece
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await _viewModel.CargarDatosUsuarioAsync();
         }
     }
 }

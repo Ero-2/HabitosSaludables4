@@ -28,7 +28,8 @@ public static class MauiProgram
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<HomeViewModel>();
         builder.Services.AddTransient<MisHabitosViewModel>();      // 👈 Nuevo
-        builder.Services.AddTransient<AgregarHabitoViewModel>();   // 👈 Nuevo
+        builder.Services.AddTransient<AgregarHabitoViewModel>();
+        builder.Services.AddTransient<PerfilViewModel>();// 👈 Nuevo
 
         // 🔹 Páginas (incluyendo las nuevas)
         builder.Services.AddTransient<BienvenidaPage>();
