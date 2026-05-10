@@ -8,12 +8,13 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
 
-        // Registrar rutas adicionales (solo las que no están en XAML o las que necesitas)
-        Routing.RegisterRoute(nameof(BienvenidaPage), typeof(BienvenidaPage));
-        Routing.RegisterRoute(nameof(RegistroPage), typeof(RegistroPage));
-        Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-        Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
-        Routing.RegisterRoute(nameof(PerfilPage), typeof(PerfilPage));
-        Routing.RegisterRoute(nameof(MisHabitosPage), typeof(MisHabitosPage)); // 👈 Ruta para "mis-habitos"
+        // Solo registrar rutas que NO están definidas como ShellContent en AppShell.xaml
+        Routing.RegisterRoute(nameof(MisHabitosPage), typeof(MisHabitosPage));
+        Routing.RegisterRoute(nameof(AgregarHabitoPage), typeof(AgregarHabitoPage));
+        Routing.RegisterRoute(nameof(EstadisticasPage), typeof(EstadisticasPage));
+        Routing.RegisterRoute(nameof(ConfiguracionPage), typeof(ConfiguracionPage));
+        Routing.RegisterRoute(nameof(RegistroActividadPage), typeof(RegistroActividadPage));
+        Routing.RegisterRoute(nameof(WelcomeModalPage), typeof(WelcomeModalPage));
+        Routing.RegisterRoute(nameof(EditarPerfilPage), typeof(EditarPerfilPage));
     }
 }

@@ -30,5 +30,17 @@ namespace HabitosSaludables.Models
 
         /// <summary>Fecha de creación del hábito.</summary>
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
+
+        /// <summary>Hábito requiere uso de cámara.</summary>
+        public bool UsarCamara { get; set; } = false;
+
+        /// <summary>Ruta local de la foto del hábito.</summary>
+        public string? FotoPath { get; set; }
+
+        /// <summary>Latitud capturada al crear el hábito (null si no aplica).</summary>
+        public double? Latitud { get; set; }
+
+        /// <summary>Longitud capturada al crear el hábito (null si no aplica).</summary>
+        public double? Longitud { get; set; }
     }
 }

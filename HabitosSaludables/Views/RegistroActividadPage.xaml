@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
+             xmlns:models="clr-namespace:HabitosSaludables.Models"
+             x:Class="HabitosSaludables.Views.RegistroActividadPage"
+             x:DataType="viewmodels:RegistroActividadViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#f2faf5">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" BackgroundColor="#0d2918">
+            <Ellipse HorizontalOptions="End" VerticalOptions="Start"
+                     WidthRequest="120" HeightRequest="120"
+                     Fill="#1a4d2e" Margin="0,-20,-20,0"/>
+
+            <VerticalStackLayout Padding="22,52,22,22" Spacing="14">
+
+                <Grid ColumnDefinitions="Auto,*">
+                    <Border Grid.Column="0"
+                            BackgroundColor="#1a4d2e" StrokeThickness="0"
+                            WidthRequest="36" HeightRequest="36" VerticalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VolverCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="&#8249;" FontSize="22" TextColor="#4ecb8d"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center"
+                                         VerticalOptions="Center" Spacing="2">
+                        <Label Text="Registrar Actividad"
+                               FontSize="18" FontAttributes="Bold" TextColor="#ffffff"
+                               HorizontalOptions="Center"/>
+                        <Label Text="{Binding CompletadosHoy, StringFormat='{0} completados hoy'}"
+                               FontSize="11" TextColor="#4ecb8d"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Progress indicator -->
+                <Label Text="{Binding TotalHabitos, StringFormat='{0} hábitos en total'}"
+                       FontSize="11" TextColor="#4a7a58"/>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Body: pending habits -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,16,18,40" Spacing="0">
+
+                <Label Text="HÁBITOS PENDIENTES"
+                       FontSize="10" FontAttributes="Bold"
+                       TextColor="#4a7a58" CharacterSpacing="2" Margin="4,0,4,12"/>
+
+                <CollectionView ItemsSource="{Binding HabitosPendientes}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Habito">
+                            <Border Margin="0,0,0,12"
+                                    BackgroundColor="#ffffff"
+                                    StrokeThickness="1.5" Stroke="#d8eede">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="16"/>
+                                </Border.StrokeShape>
+                                <Grid Padding="16,16" ColumnDefinitions="50,*,52">
+
+                                    <Border Grid.Column="0"
+                                            BackgroundColor="#e0f2e8"
+                                            StrokeThickness="0"
+                                            WidthRequest="42" HeightRequest="42"
+                                            VerticalOptions="Center">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="13"/>
+                                        </Border.StrokeShape>
+                                        <Label Text="{Binding Icono}"
+                                               FontSize="20"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </Border>
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         VerticalOptions="Center"
+                                                         Spacing="3" Margin="10,0">
+                                        <Label Text="{Binding Nombre}"
+                                               FontSize="15" FontAttributes="Bold"
+                                               TextColor="#0d2918"/>
+                                        <Label Text="{Binding RachaActual, StringFormat='🔥 Racha: {0} días'}"
+                                               FontSize="11" TextColor="#8ab89a"/>
+                                    </VerticalStackLayout>
+
+                                    <Border Grid.Column="2"
+                                            BackgroundColor="#4ecb8d"
+                                            StrokeThickness="0"
+                                            WidthRequest="44" HeightRequest="44"
+                                            VerticalOptions="Center">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="13"/>
+                                        </Border.StrokeShape>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:RegistroActividadViewModel}}, Path=RegistrarCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="✓"
+                                               FontSize="20" FontAttributes="Bold"
+                                               TextColor="#0d2918"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </Border>
+
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <VerticalStackLayout IsVisible="{Binding HabitosPendientes.Count, Converter={StaticResource CountToBoolConverter}}"
+                                     HorizontalOptions="Center" Spacing="8" Margin="0,30">
+                    <Label Text="🎉" FontSize="48" HorizontalOptions="Center"/>
+                    <Label Text="¡Todos los hábitos completados!"
+                           FontSize="15" FontAttributes="Bold"
+                           TextColor="#3a7a52" HorizontalOptions="Center"/>
+                    <Label Text="Excelente trabajo hoy"
+                           FontSize="12" TextColor="#4a7a58" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

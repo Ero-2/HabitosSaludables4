@@ -1,7 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HabitosSaludables.Models;  // 👈 Aquí está el modelo User
+using HabitosSaludables.Models;
 using HabitosSaludables.Services;
+using HabitosSaludables.Views;
 using System.Collections.ObjectModel;
 
 namespace HabitosSaludables.ViewModels
@@ -165,7 +166,7 @@ namespace HabitosSaludables.ViewModels
         [RelayCommand]
         private async Task EditarPerfilAsync()
         {
-            await Shell.Current.GoToAsync("editarPerfil");
+            await Shell.Current.GoToAsync(nameof(EditarPerfilPage));
         }
 
         [RelayCommand]

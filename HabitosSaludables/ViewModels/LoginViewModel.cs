@@ -94,7 +94,7 @@ namespace HabitosSaludables.ViewModels
 
         // 🔹 Comando para navegar a la página de registro
         [RelayCommand]
-        private async Task IrARegistro() => await Shell.Current.GoToAsync("RegistroPage");
+        private async Task IrARegistro() => await Shell.Current.GoToAsync("//RegistroPage");
 
         // 🔹 Método opcional: Verificar si hay sesión activa al iniciar la app
         public static bool HaySesionActiva()

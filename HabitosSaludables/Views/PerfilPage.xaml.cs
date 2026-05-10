@@ -14,11 +14,15 @@ namespace HabitosSaludables.Views
             BindingContext = _viewModel = viewModel;
         }
 
-        // 👇 Cargar datos cuando la página aparece
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             await _viewModel.CargarDatosUsuarioAsync();
+        }
+
+        private async void OnVolverClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//HomePage");
         }
     }
 }

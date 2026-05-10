@@ -31,7 +31,7 @@ public partial class HomePage : ContentPage
     private async void OnPerfilClicked(object sender, EventArgs e)
     {
         // CORREGIDO: Se quitan las "//" porque PerfilPage no es una pestaña principal (ShellContent)
-        await Shell.Current.GoToAsync(nameof(PerfilPage));
+        await Shell.Current.GoToAsync("//PerfilPage");
     }
 
     private async void OnMisHabitosClicked(object sender, EventArgs e)

@@ -7,6 +7,10 @@
         <ResourceDictionary>
             <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converters:CountToBoolConverter x:Key="CountToBoolConverter" />
+            <converters:BoolToLogrosColorConverter x:Key="BoolToLogrosColorConverter" />
+            <converters:BoolToLogrosBorderConverter x:Key="BoolToLogrosBorderConverter" />
+            <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
+            <converters:BoolToLogrosTextConverter x:Key="BoolToLogrosTextConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -87,6 +87,10 @@ namespace HabitosSaludables.Services
         public Task<int> RegisterUser(User user)
             => _database.InsertAsync(user);
 
+        // Actualizar datos de usuario existente
+        public Task<int> UpdateUserAsync(User user)
+            => _database.UpdateAsync(user);
+
         // 👇 NUEVO: Obtener total de hábitos por usuario
         public async Task<int> GetTotalHabitosByUser(int userId)
         {

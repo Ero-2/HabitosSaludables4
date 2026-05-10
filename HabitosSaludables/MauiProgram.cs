@@ -22,23 +22,32 @@ public static class MauiProgram
         string dbPath = Path.Combine(FileSystem.AppDataDirectory, "habitos.db3");
         builder.Services.AddSingleton(new DatabaseService(dbPath));
 
-        // 🔹 ViewModels (incluyendo los nuevos)
+        // ViewModels
         builder.Services.AddTransient<BienvenidaViewModel>();
         builder.Services.AddTransient<RegistroViewModel>();
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<HomeViewModel>();
-        builder.Services.AddTransient<MisHabitosViewModel>();      // 👈 Nuevo
+        builder.Services.AddTransient<MisHabitosViewModel>();
         builder.Services.AddTransient<AgregarHabitoViewModel>();
-        builder.Services.AddTransient<PerfilViewModel>();// 👈 Nuevo
+        builder.Services.AddTransient<PerfilViewModel>();
+        builder.Services.AddTransient<EstadisticasViewModel>();
+        builder.Services.AddTransient<ConfiguracionViewModel>();
+        builder.Services.AddTransient<RegistroActividadViewModel>();
+        builder.Services.AddTransient<EditarPerfilViewModel>();
 
-        // 🔹 Páginas (incluyendo las nuevas)
+        // Pages
         builder.Services.AddTransient<BienvenidaPage>();
         builder.Services.AddTransient<RegistroPage>();
         builder.Services.AddTransient<LoginPage>();
         builder.Services.AddTransient<HomePage>();
         builder.Services.AddTransient<WelcomeModalPage>();
-        builder.Services.AddTransient<MisHabitosPage>();           // 👈 Nuevo
-        builder.Services.AddTransient<AgregarHabitoPage>();        // 👈 Nuevo
+        builder.Services.AddTransient<MisHabitosPage>();
+        builder.Services.AddTransient<AgregarHabitoPage>();
+        builder.Services.AddTransient<PerfilPage>();
+        builder.Services.AddTransient<EstadisticasPage>();
+        builder.Services.AddTransient<ConfiguracionPage>();
+        builder.Services.AddTransient<RegistroActividadPage>();
+        builder.Services.AddTransient<EditarPerfilPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

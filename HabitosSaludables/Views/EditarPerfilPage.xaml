@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
+             x:Class="HabitosSaludables.Views.EditarPerfilPage"
+             x:DataType="viewmodels:EditarPerfilViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#f0f6ff">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header azul oscuro (mismo estilo PerfilPage) -->
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0a1f3d" Offset="0.0"/>
+                    <GradientStop Color="#1a3f7a" Offset="0.6"/>
+                    <GradientStop Color="#0f2a54" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Ellipse HorizontalOptions="End" VerticalOptions="Start"
+                     WidthRequest="140" HeightRequest="140"
+                     Margin="0,-40,-30,0" Opacity="0.3">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#2e6abf" Offset="0.0"/>
+                        <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Grid Padding="22,52,22,24" ColumnDefinitions="Auto,*">
+                <Border Grid.Column="0"
+                        StrokeThickness="1" Stroke="#1e4a8a"
+                        WidthRequest="36" HeightRequest="36" VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#0f2a54" Offset="0.0"/>
+                            <GradientStop Color="#1a3f7a" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding VolverCommand}"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="&#8249;" FontSize="22" TextColor="#4a9eff"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+
+                <Label Grid.Column="1"
+                       Text="Editar Perfil"
+                       FontSize="20" FontAttributes="Bold" TextColor="#ffffff"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+
+        <!-- Body -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,24,20,50" Spacing="16">
+
+                <!-- Sección: Apariencia -->
+                <Label Text="APARIENCIA"
+                       FontSize="10" FontAttributes="Bold"
+                       TextColor="#7a9abe" CharacterSpacing="2" Margin="4,0,4,2"/>
+
+                <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#c8d8f8" Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Border Grid.Column="0" StrokeThickness="0" WidthRequest="32" HeightRequest="32">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="9"/>
+                            </Border.StrokeShape>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                    <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Text="🌙" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
+                            <Label Text="Modo oscuro" FontSize="14" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                            <Label Text="Cambia la apariencia de la app" FontSize="11" TextColor="#7a9abe"/>
+                        </VerticalStackLayout>
+                        <Switch Grid.Column="2"
+                                IsToggled="{Binding ModoOscuro}"
+                                OnColor="#2e6aef" ThumbColor="#0a1f3d"
+                                VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <!-- Sección: Cambiar contraseña -->
+                <Label Text="SEGURIDAD"
+                       FontSize="10" FontAttributes="Bold"
+                       TextColor="#7a9abe" CharacterSpacing="2" Margin="4,8,4,2"/>
+
+                <!-- Contraseña actual -->
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="CONTRASEÑA ACTUAL"
+                           FontSize="10" FontAttributes="Bold"
+                           TextColor="#7a9abe" CharacterSpacing="1.5"/>
+                    <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#c8d8f8" HeightRequest="54">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14"/>
+                        </Border.StrokeShape>
+                        <Entry Placeholder="Ingresa tu contraseña actual"
+                               Text="{Binding ContrasenaActual}"
+                               IsPassword="True"
+                               PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
+                               FontSize="14" BackgroundColor="Transparent" Margin="8,0"/>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Nueva contraseña -->
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="NUEVA CONTRASEÑA"
+                           FontSize="10" FontAttributes="Bold"
+                           TextColor="#7a9abe" CharacterSpacing="1.5"/>
+                    <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#c8d8f8" HeightRequest="54">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14"/>
+                        </Border.StrokeShape>
+                        <Entry Placeholder="Mínimo 6 caracteres"
+                               Text="{Binding NuevaContrasena}"
+                               IsPassword="True"
+                               PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
+                               FontSize="14" BackgroundColor="Transparent" Margin="8,0"/>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Confirmar contraseña -->
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="CONFIRMAR NUEVA CONTRASEÑA"
+                           FontSize="10" FontAttributes="Bold"
+                           TextColor="#7a9abe" CharacterSpacing="1.5"/>
+                    <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#c8d8f8" HeightRequest="54">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14"/>
+                        </Border.StrokeShape>
+                        <Entry Placeholder="Repite la nueva contraseña"
+                               Text="{Binding ConfirmarContrasena}"
+                               IsPassword="True"
+                               PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
+                               FontSize="14" BackgroundColor="Transparent" Margin="8,0"/>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Botón guardar contraseña -->
+                <Border StrokeThickness="0" HeightRequest="54" Margin="0,8,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#1a4abf" Offset="0.0"/>
+                            <GradientStop Color="#2e6aef" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Text="Cambiar contraseña"
+                            Command="{Binding CambiarContrasenaCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="#ffffff"
+                            FontSize="14" FontAttributes="Bold"/>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

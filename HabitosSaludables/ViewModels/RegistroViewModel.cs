@@ -53,6 +53,6 @@ namespace HabitosSaludables.ViewModels
         }
 
         [RelayCommand]
-        private async Task IrALogin() => await Shell.Current.GoToAsync("LoginPage");
+        private async Task IrALogin() => await Shell.Current.GoToAsync("//LoginPage");
     }
 }

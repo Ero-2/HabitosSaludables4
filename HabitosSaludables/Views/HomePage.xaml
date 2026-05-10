@@ -4,18 +4,18 @@
              xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
              x:Class="HabitosSaludables.Views.HomePage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#f2faf5">
+             BackgroundColor="#f0f6ff">
 
     <Grid RowDefinitions="Auto,Auto,*,Auto">
 
-        <Grid Grid.Row="0" BackgroundColor="#0d2918">
+        <Grid Grid.Row="0" BackgroundColor="#0a1f3d">
 
             <Ellipse HorizontalOptions="End" VerticalOptions="Start"
                      WidthRequest="120" HeightRequest="120"
-                     Fill="#1a4d2e" Margin="0,-20,-20,0"/>
+                     Fill="#1a3f7a" Margin="0,-20,-20,0"/>
             <Ellipse HorizontalOptions="Start" VerticalOptions="End"
                      WidthRequest="60" HeightRequest="60"
-                     Fill="#1e3d28" Opacity="0.5" Margin="20,0,0,-10"/>
+                     Fill="#0f2a54" Opacity="0.5" Margin="20,0,0,-10"/>
 
             <Grid Padding="22,52,22,22">
                 <Grid.ColumnDefinitions>
@@ -26,19 +26,19 @@
 
                 <VerticalStackLayout Grid.Column="0" Spacing="3">
                     <Label Text="BUENOS DÍAS"
-                           FontSize="10" TextColor="#4ecb8d"
+                           FontSize="10" TextColor="#4a9eff"
                            CharacterSpacing="2.2" FontAttributes="Bold"/>
                     <Label Text="{Binding NombreUsuario}"
                            FontSize="24" FontAttributes="Bold" TextColor="#ffffff"
                            CharacterSpacing="-0.3"/>
                     <Label Text="¿Listo para tus hábitos de hoy?"
-                           FontSize="11" TextColor="#4a7a58"/>
+                           FontSize="11" TextColor="#4a6a9a"/>
                 </VerticalStackLayout>
 
                 <Border Grid.Column="1"
-                        BackgroundColor="#1a4d2e"
+                        BackgroundColor="#1a3f7a"
                         StrokeThickness="2"
-                        Stroke="#4ecb8d"
+                        Stroke="#4a9eff"
                         WidthRequest="46"
                         HeightRequest="46"
                         VerticalOptions="Center">
@@ -47,12 +47,12 @@
                     </Border.StrokeShape>
                     <Label Text="C"
                            FontSize="18" FontAttributes="Bold"
-                           TextColor="#4ecb8d"
+                           TextColor="#4a9eff"
                            HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Border>
 
                 <Border Grid.Column="2"
-                        BackgroundColor="#1e3d28"
+                        BackgroundColor="#0f2a54"
                         StrokeThickness="0"
                         WidthRequest="46"
                         HeightRequest="46"
@@ -72,7 +72,7 @@
         </Grid>
 
         <Grid Grid.Row="1" Padding="18,0,18,12" Margin="0,-22,0,0">
-            <Border BackgroundColor="#1a4d2e"
+            <Border BackgroundColor="#1a3f7a"
                     StrokeThickness="0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20"/>
@@ -82,48 +82,48 @@
                     <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" Spacing="6">
                         <Grid WidthRequest="54" HeightRequest="54" HorizontalOptions="Center">
                             <Ellipse WidthRequest="54" HeightRequest="54"
-                                     Stroke="#0d2918" StrokeThickness="5" Fill="Transparent"/>
+                                     Stroke="#0a1f3d" StrokeThickness="5" Fill="Transparent"/>
                             <Ellipse WidthRequest="44" HeightRequest="44"
-                                     Stroke="#4ecb8d" StrokeThickness="4.5" Fill="Transparent"
+                                     Stroke="#4a9eff" StrokeThickness="4.5" Fill="Transparent"
                                      HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Text="{Binding HabitosCompletados, StringFormat='{0}/3'}"
                                    FontSize="10" FontAttributes="Bold" TextColor="#ffffff"
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Grid>
-                        <Label Text="Hábitos" FontSize="9" TextColor="#4a7a58" HorizontalTextAlignment="Center"/>
+                        <Label Text="Hábitos" FontSize="9" TextColor="#4a6a9a" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="6">
                         <Grid WidthRequest="54" HeightRequest="54" HorizontalOptions="Center">
                             <Ellipse WidthRequest="54" HeightRequest="54"
-                                     Stroke="#0d2918" StrokeThickness="5" Fill="Transparent"/>
+                                     Stroke="#0a1f3d" StrokeThickness="5" Fill="Transparent"/>
                             <Ellipse WidthRequest="44" HeightRequest="44"
-                                     Stroke="#2e8a54" StrokeThickness="4.5" Fill="Transparent"
+                                     Stroke="#2e6aef" StrokeThickness="4.5" Fill="Transparent"
                                      HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Text="8h"
                                    FontSize="11" FontAttributes="Bold" TextColor="#ffffff"
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Grid>
-                        <Label Text="Sueño" FontSize="9" TextColor="#4a7a58" HorizontalTextAlignment="Center"/>
+                        <Label Text="Sueño" FontSize="9" TextColor="#4a6a9a" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" Spacing="6">
                         <Grid WidthRequest="54" HeightRequest="54" HorizontalOptions="Center">
                             <Ellipse WidthRequest="54" HeightRequest="54"
-                                     Stroke="#0d2918" StrokeThickness="5" Fill="Transparent"/>
+                                     Stroke="#0a1f3d" StrokeThickness="5" Fill="Transparent"/>
                             <Ellipse WidthRequest="44" HeightRequest="44"
-                                     Stroke="#1e6640" StrokeThickness="4.5" Fill="Transparent"
+                                     Stroke="#1a4abf" StrokeThickness="4.5" Fill="Transparent"
                                      HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Text="1.2L"
                                    FontSize="10" FontAttributes="Bold" TextColor="#ffffff"
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Grid>
-                        <Label Text="Agua" FontSize="9" TextColor="#4a7a58" HorizontalTextAlignment="Center"/>
+                        <Label Text="Agua" FontSize="9" TextColor="#4a6a9a" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
 
                     <Border Grid.Column="3"
-                            BackgroundColor="#0d2918"
-                            StrokeThickness="1" Stroke="#2a5e38"
+                            BackgroundColor="#0a1f3d"
+                            StrokeThickness="1" Stroke="#1e4a8a"
                             VerticalOptions="Center"
                             Padding="10,10">
                         <Border.StrokeShape>
@@ -133,8 +133,8 @@
                             <Label Text="🔥" FontSize="16" HorizontalOptions="Center"/>
                             <Label Text="{Binding RachaTotal}"
                                    FontSize="16" FontAttributes="Bold"
-                                   TextColor="#4ecb8d" HorizontalOptions="Center" LineHeight="1"/>
-                            <Label Text="días" FontSize="8" TextColor="#4a7a58" HorizontalOptions="Center"/>
+                                   TextColor="#4a9eff" HorizontalOptions="Center" LineHeight="1"/>
+                            <Label Text="días" FontSize="8" TextColor="#4a6a9a" HorizontalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>
 
@@ -142,7 +142,7 @@
             </Border>
         </Grid>
 
-        <ScrollView Grid.Row="2" BackgroundColor="#f2faf5">
+        <ScrollView Grid.Row="2" BackgroundColor="#f0f6ff">
             <VerticalStackLayout Padding="18,4,18,12" Spacing="0">
 
                 <Grid Padding="2,0,2,12">
@@ -152,11 +152,11 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0"
                            Text="Hábitos de hoy"
-                           FontSize="16" FontAttributes="Bold" TextColor="#0d2918"
+                           FontSize="16" FontAttributes="Bold" TextColor="#0a1f3d"
                            CharacterSpacing="-0.2"/>
                     <Label Grid.Column="1"
                            Text="Ver todos ›"
-                           FontSize="11" TextColor="#3a7a52"
+                           FontSize="11" TextColor="#2e5aaa"
                            FontAttributes="Bold" VerticalOptions="Center"/>
                 </Grid>
 
@@ -166,7 +166,7 @@
                             <Border Margin="0,0,0,10"
                                     BackgroundColor="#ffffff"
                                     StrokeThickness="1.5"
-                                    Stroke="#d8eede">
+                                    Stroke="#c8d8f8">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="16"/>
                                 </Border.StrokeShape>
@@ -178,7 +178,7 @@
                                 <Grid Padding="14,14" ColumnDefinitions="46,*,36">
 
                                     <Border Grid.Column="0"
-                                            BackgroundColor="#e0f2e8"
+                                            BackgroundColor="#dce8ff"
                                             StrokeThickness="0"
                                             WidthRequest="38" HeightRequest="38"
                                             VerticalOptions="Center">
@@ -196,22 +196,22 @@
                                                          Spacing="3" Margin="10,0">
                                         <Label Text="{Binding Nombre}"
                                                FontSize="14" FontAttributes="Bold"
-                                               TextColor="#0d2918"/>
+                                               TextColor="#0a1f3d"/>
                                         <Label Text="{Binding RachaActual, StringFormat='🔥 {0} días seguidos'}"
-                                               FontSize="10" TextColor="#8ab89a"/>
+                                               FontSize="10" TextColor="#7a9abe"/>
                                     </VerticalStackLayout>
 
                                     <Border Grid.Column="2"
-                                            BackgroundColor="#e0f2e8"
+                                            BackgroundColor="#dce8ff"
                                             StrokeThickness="1.5"
-                                            Stroke="#b0d8bc"
+                                            Stroke="#b8d0f0"
                                             WidthRequest="32" HeightRequest="32"
                                             VerticalOptions="Center">
                                         <Border.StrokeShape>
                                             <RoundRectangle CornerRadius="10"/>
                                         </Border.StrokeShape>
                                         <Button BackgroundColor="Transparent"
-                                                TextColor="#3a7a52"
+                                                TextColor="#2e5aaa"
                                                 FontSize="14" FontAttributes="Bold"
                                                 Text="✓"
                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=MarcarCompletadoCommand}"
@@ -228,14 +228,14 @@
 
                 <Label Text="🎉  ¡Todos los hábitos completados!"
                        IsVisible="{Binding HabitosPendientes.Count, Converter={StaticResource CountToBoolConverter}}"
-                       FontSize="13" TextColor="#3a7a52" FontAttributes="Bold"
+                       FontSize="13" TextColor="#2e5aaa" FontAttributes="Bold"
                        HorizontalOptions="Center" Margin="0,14"/>
 
             </VerticalStackLayout>
         </ScrollView>
 
         <Border Grid.Row="3"
-                BackgroundColor="#0d2918"
+                BackgroundColor="#0a1f3d"
                 StrokeThickness="0"
                 Margin="16,0,16,24">
             <Border.StrokeShape>
@@ -246,7 +246,7 @@
                   ColumnSpacing="4">
 
                 <Border Grid.Column="0"
-                        BackgroundColor="#4ecb8d"
+                        BackgroundColor="#2e6aef"
                         StrokeThickness="0"
                         Padding="0,10">
                     <Border.StrokeShape>
@@ -258,7 +258,7 @@
                     <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
                         <Label Text="⭐" FontSize="16" HorizontalOptions="Center"/>
                         <Label Text="Inicio" FontSize="9" FontAttributes="Bold"
-                               TextColor="#0d2918" HorizontalOptions="Center"/>
+                               TextColor="#ffffff" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 
@@ -271,7 +271,7 @@
                     </Border.GestureRecognizers>
                     <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
                         <Label Text="📊" FontSize="16" HorizontalOptions="Center"/>
-                        <Label Text="Stats" FontSize="9" TextColor="#4a7a58" HorizontalOptions="Center"/>
+                        <Label Text="Stats" FontSize="9" TextColor="#4a6a9a" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 
@@ -284,7 +284,7 @@
                     </Border.GestureRecognizers>
                     <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
                         <Label Text="📋" FontSize="16" HorizontalOptions="Center"/>
-                        <Label Text="Hábitos" FontSize="9" TextColor="#4a7a58" HorizontalOptions="Center"/>
+                        <Label Text="Hábitos" FontSize="9" TextColor="#4a6a9a" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 
@@ -297,7 +297,7 @@
                     </Border.GestureRecognizers>
                     <VerticalStackLayout HorizontalOptions="Center" Spacing="3">
                         <Label Text="👤" FontSize="16" HorizontalOptions="Center"/>
-                        <Label Text="Perfil" FontSize="9" TextColor="#4a7a58" HorizontalOptions="Center"/>
+                        <Label Text="Perfil" FontSize="9" TextColor="#4a6a9a" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
 

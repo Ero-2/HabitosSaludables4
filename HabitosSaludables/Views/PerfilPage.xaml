@@ -57,6 +57,9 @@
                                 <GradientStop Color="#1a3f7a" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Border.Background>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnVolverClicked"/>
+                        </Border.GestureRecognizers>
                         <Label Text="&#8249;" FontSize="20" TextColor="#4a9eff"
                                HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Border>

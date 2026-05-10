@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
+             x:Class="HabitosSaludables.Views.ConfiguracionPage"
+             x:DataType="viewmodels:ConfiguracionViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#f2faf5">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header verde oscuro -->
+        <Grid Grid.Row="0" BackgroundColor="#0d2918">
+            <Ellipse HorizontalOptions="End" VerticalOptions="Start"
+                     WidthRequest="100" HeightRequest="100"
+                     Fill="#1a4d2e" Margin="0,-20,-20,0"/>
+
+            <Grid Padding="22,52,22,24" ColumnDefinitions="Auto,*">
+                <Border Grid.Column="0"
+                        BackgroundColor="#1a4d2e" StrokeThickness="0"
+                        WidthRequest="36" HeightRequest="36" VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding VolverCommand}"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="&#8249;" FontSize="22" TextColor="#4ecb8d"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+                <Label Grid.Column="1"
+                       Text="Configuración"
+                       FontSize="20" FontAttributes="Bold" TextColor="#ffffff"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+
+        <!-- Body -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,24,18,40" Spacing="12">
+
+                <Label Text="PREFERENCIAS"
+                       FontSize="10" FontAttributes="Bold"
+                       TextColor="#4a7a58" CharacterSpacing="2" Margin="4,0,4,4"/>
+
+                <!-- Notificaciones -->
+                <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#d8eede" Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Border Grid.Column="0" StrokeThickness="0"
+                                BackgroundColor="#e0f2e8"
+                                WidthRequest="32" HeightRequest="32">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="9"/>
+                            </Border.StrokeShape>
+                            <Label Text="&#128276;" FontSize="16"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center"
+                                             Margin="12,0" Spacing="2">
+                            <Label Text="Notificaciones" FontSize="14"
+                                   FontAttributes="Bold" TextColor="#0d2918"/>
+                            <Label Text="Recordatorios diarios" FontSize="11" TextColor="#4a7a58"/>
+                        </VerticalStackLayout>
+                        <Switch Grid.Column="2"
+                                IsToggled="{Binding NotificacionesActivas}"
+                                OnColor="#4ecb8d" ThumbColor="#0d2918"
+                                VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <!-- Meta diaria -->
+                <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#d8eede" Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14"/>
+                    </Border.StrokeShape>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EditarMetaCommand}"/>
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Border Grid.Column="0" StrokeThickness="0"
+                                BackgroundColor="#e0f2e8"
+                                WidthRequest="32" HeightRequest="32">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="9"/>
+                            </Border.StrokeShape>
+                            <Label Text="&#127919;" FontSize="16"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center"
+                                             Margin="12,0" Spacing="2">
+                            <Label Text="Meta diaria" FontSize="14"
+                                   FontAttributes="Bold" TextColor="#0d2918"/>
+                            <Label Text="{Binding MetaDiaria, StringFormat='{0} hábitos por día'}"
+                                   FontSize="11" TextColor="#4a7a58"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="&#8250;" FontSize="22"
+                               TextColor="#4ecb8d" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Label Text="CUENTA"
+                       FontSize="10" FontAttributes="Bold"
+                       TextColor="#4a7a58" CharacterSpacing="2" Margin="4,10,4,4"/>
+
+                <!-- Cerrar sesión -->
+                <Button Text="Cerrar sesión"
+                        Command="{Binding CerrarSesionCommand}"
+                        BackgroundColor="#fff0f0"
+                        TextColor="#c0392b"
+                        FontSize="14" FontAttributes="Bold"
+                        CornerRadius="14" HeightRequest="52"/>
+
+                <Label Text="Hábitos Saludables v1.0.0"
+                       FontSize="11" TextColor="#8ab89a"
+                       HorizontalTextAlignment="Center" Margin="0,8,0,0"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

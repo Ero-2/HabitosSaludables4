@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using HabitosSaludables.Models;
 using HabitosSaludables.Services;
+using HabitosSaludables.Views;
 using System.Collections.ObjectModel;
 
 namespace HabitosSaludables.ViewModels
@@ -71,14 +72,12 @@ namespace HabitosSaludables.ViewModels
         private async Task CerrarSesion() => await Shell.Current.GoToAsync("//BienvenidaPage");
 
         [RelayCommand]
-        private async Task RegistrarActividad() => await Shell.Current.GoToAsync("MisHabitosPage");
+        private async Task RegistrarActividad() => await Shell.Current.GoToAsync(nameof(RegistroActividadPage));
 
         [RelayCommand]
-        private async Task VerEstadisticas() =>
-            await Application.Current!.MainPage!.DisplayAlert("Info", "Funcionalidad en desarrollo", "OK");
+        private async Task VerEstadisticas() => await Shell.Current.GoToAsync(nameof(EstadisticasPage));
 
         [RelayCommand]
-        private async Task Configuracion() =>
-            await Application.Current!.MainPage!.DisplayAlert("Info", "Funcionalidad en desarrollo", "OK");
+        private async Task Configuracion() => await Shell.Current.GoToAsync(nameof(ConfiguracionPage));
     }
 }

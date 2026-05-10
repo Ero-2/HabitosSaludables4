@@ -43,6 +43,9 @@
                             <GradientStop Color="#1a3f7a" Offset="1.0"/>
                         </LinearGradientBrush>
                     </Border.Background>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CancelarCommand}"/>
+                    </Border.GestureRecognizers>
                     <Label Text="&#8249;" FontSize="20" TextColor="#4a9eff"
                            HorizontalOptions="Center" VerticalOptions="Center"/>
                 </Border>
@@ -220,6 +223,173 @@
                                Text="{Binding Icono}" MaxLength="2"
                                PlaceholderColor="#a8c4e8" TextColor="#0a1f3d"
                                FontSize="20" BackgroundColor="Transparent" Margin="8,0"/>
+                    </Border>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="1" Margin="0,4">
+                    <BoxView.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#c8d8ff" Offset="0.0"/>
+                            <GradientStop Color="#dce8ff" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+
+                <!-- Permisos y sensores -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="PERMISOS Y SENSORES"
+                           FontSize="10" FontAttributes="Bold"
+                           TextColor="#7a9abe" CharacterSpacing="1.8"/>
+
+                    <!-- Cámara -->
+                    <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#b8d0f0" Padding="16,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="12">
+
+                            <!-- Toggle row -->
+                            <Grid ColumnDefinitions="36,*,Auto">
+                                <Border Grid.Column="0" StrokeThickness="0" WidthRequest="32" HeightRequest="32">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="9"/>
+                                    </Border.StrokeShape>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                            <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Label Text="📷" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
+                                    <Label Text="Foto del hábito" FontSize="14" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                                    <Label Text="Toma una foto al guardar" FontSize="11" TextColor="#7a9abe"/>
+                                </VerticalStackLayout>
+                                <Switch Grid.Column="2"
+                                        IsToggled="{Binding UsarCamara}"
+                                        OnColor="#2e6aef" ThumbColor="#0a1f3d"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+
+                            <!-- Botón tomar foto (visible cuando cámara activa y sin foto) -->
+                            <Border StrokeThickness="1.5" Stroke="#2e6aef"
+                                    BackgroundColor="#f0f4ff" HeightRequest="44"
+                                    IsVisible="{Binding UsarCamara}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10"/>
+                                </Border.StrokeShape>
+                                <Button Text="📸  Tomar foto"
+                                        Command="{Binding TomarFotoCommand}"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#2e6aef"
+                                        FontSize="13" FontAttributes="Bold"/>
+                            </Border>
+
+                            <!-- Preview foto (visible cuando foto tomada) -->
+                            <Border StrokeThickness="1.5" Stroke="#b8d0f0"
+                                    IsVisible="{Binding FotoTomada}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12"/>
+                                </Border.StrokeShape>
+                                <Grid>
+                                    <Image Source="{Binding FotoPreview}"
+                                           HeightRequest="180"
+                                           Aspect="AspectFill"/>
+                                    <!-- Botón eliminar foto -->
+                                    <Border BackgroundColor="#cc2222" StrokeThickness="0"
+                                            WidthRequest="32" HeightRequest="32"
+                                            HorizontalOptions="End" VerticalOptions="Start"
+                                            Margin="0,8,8,0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="16"/>
+                                        </Border.StrokeShape>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding EliminarFotoCommand}"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="✕" FontSize="14" FontAttributes="Bold"
+                                               TextColor="#ffffff"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                </Grid>
+                            </Border>
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Ubicación -->
+                    <Border BackgroundColor="#ffffff" StrokeThickness="1.5" Stroke="#b8d0f0" Padding="16,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="10">
+                            <Grid ColumnDefinitions="36,*,Auto">
+                                <Border Grid.Column="0" StrokeThickness="0" WidthRequest="32" HeightRequest="32">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="9"/>
+                                    </Border.StrokeShape>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#dce8ff" Offset="0.0"/>
+                                            <GradientStop Color="#c8d8ff" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Label Text="📍" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0" Spacing="2">
+                                    <Label Text="Rastrear ubicación" FontSize="14" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                                    <Label Text="Para hábitos con movimiento" FontSize="11" TextColor="#7a9abe"/>
+                                </VerticalStackLayout>
+                                <Switch Grid.Column="2"
+                                        IsToggled="{Binding RastrearUbicacion}"
+                                        OnColor="#2e6aef" ThumbColor="#0a1f3d"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+
+                            <!-- Coordenadas (visible cuando ubicación activa) -->
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="10"
+                                  IsVisible="{Binding RastrearUbicacion}">
+                                <Border Grid.Column="0" BackgroundColor="#f0f6ff"
+                                        StrokeThickness="1" Stroke="#b8d0f0" Padding="10,10">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"/>
+                                    </Border.StrokeShape>
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="LAT" FontSize="9" FontAttributes="Bold"
+                                               TextColor="#7a9abe" CharacterSpacing="1"/>
+                                        <Label Text="{Binding LatitudTexto}"
+                                               FontSize="12" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                                    </VerticalStackLayout>
+                                </Border>
+                                <Border Grid.Column="1" BackgroundColor="#f0f6ff"
+                                        StrokeThickness="1" Stroke="#b8d0f0" Padding="10,10">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"/>
+                                    </Border.StrokeShape>
+                                    <VerticalStackLayout Spacing="2">
+                                        <Label Text="LON" FontSize="9" FontAttributes="Bold"
+                                               TextColor="#7a9abe" CharacterSpacing="1"/>
+                                        <Label Text="{Binding LongitudTexto}"
+                                               FontSize="12" FontAttributes="Bold" TextColor="#0a1f3d"/>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+
+                            <!-- Botón actualizar ubicación -->
+                            <Border StrokeThickness="1.5" Stroke="#b8d0f0"
+                                    BackgroundColor="#ffffff" HeightRequest="40"
+                                    IsVisible="{Binding RastrearUbicacion}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10"/>
+                                </Border.StrokeShape>
+                                <Button Text="📡  Actualizar ubicación"
+                                        Command="{Binding ObtenerUbicacionActualCommand}"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#2a5aaa"
+                                        FontSize="12" FontAttributes="Bold"/>
+                            </Border>
+
+                        </VerticalStackLayout>
                     </Border>
                 </VerticalStackLayout>
 

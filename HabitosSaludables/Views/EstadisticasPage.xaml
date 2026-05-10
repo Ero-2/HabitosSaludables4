@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HabitosSaludables.ViewModels"
+             xmlns:models="clr-namespace:HabitosSaludables.Models"
+             x:Class="HabitosSaludables.Views.EstadisticasPage"
+             x:DataType="viewmodels:EstadisticasViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#f0f6ff">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header azul oscuro -->
+        <Grid Grid.Row="0" BackgroundColor="#0a1f3d">
+            <Ellipse HorizontalOptions="End" VerticalOptions="Start"
+                     WidthRequest="120" HeightRequest="120"
+                     Fill="#1a3f7a" Margin="0,-20,-20,0"/>
+
+            <VerticalStackLayout Padding="22,52,22,22" Spacing="20">
+
+                <!-- Top row: back + title -->
+                <Grid ColumnDefinitions="Auto,*">
+                    <Border Grid.Column="0"
+                            BackgroundColor="#1a3f7a" StrokeThickness="0"
+                            WidthRequest="36" HeightRequest="36" VerticalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VolverCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="&#8249;" FontSize="22" TextColor="#4a9eff"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Label Grid.Column="1"
+                           Text="Estadísticas"
+                           FontSize="20" FontAttributes="Bold" TextColor="#ffffff"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+
+                <!-- Stats summary cards -->
+                <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="10">
+                    <Border Grid.Column="0" BackgroundColor="#1a3f7a"
+                            StrokeThickness="0" Padding="10,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding TotalHabitos}"
+                                   FontSize="22" FontAttributes="Bold"
+                                   TextColor="#4a9eff" HorizontalOptions="Center"/>
+                            <Label Text="Total" FontSize="9" TextColor="#4a6a9a" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1" BackgroundColor="#1a3f7a"
+                            StrokeThickness="0" Padding="10,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding RachaMaxima}"
+                                   FontSize="22" FontAttributes="Bold"
+                                   TextColor="#4a9eff" HorizontalOptions="Center"/>
+                            <Label Text="Racha max" FontSize="9" TextColor="#4a6a9a" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="2" BackgroundColor="#1a3f7a"
+                            StrokeThickness="0" Padding="10,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding DiasActivos}"
+                                   FontSize="22" FontAttributes="Bold"
+                                   TextColor="#4a9eff" HorizontalOptions="Center"/>
+                            <Label Text="Días activo" FontSize="9" TextColor="#4a6a9a" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="3" BackgroundColor="#1a3f7a"
+                            StrokeThickness="0" Padding="10,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="{Binding CompletadosHoy}"
+                                   FontSize="22" FontAttributes="Bold"
+                                   TextColor="#4a9eff" HorizontalOptions="Center"/>
+                            <Label Text="Hoy" FontSize="9" TextColor="#4a6a9a" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Body: habit list -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,18,18,40" Spacing="10">
+
+                <Label Text="RENDIMIENTO POR HÁBITO"
+                       FontSize="10" FontAttributes="Bold"
+                       TextColor="#4a6a9a" CharacterSpacing="2" Margin="4,0,4,6"/>
+
+                <CollectionView ItemsSource="{Binding Habitos}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Habito">
+                            <Border Margin="0,0,0,10"
+                                    BackgroundColor="#ffffff"
+                                    StrokeThickness="1.5" Stroke="#c8d8f8">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="16"/>
+                                </Border.StrokeShape>
+                                <Grid Padding="14,14" ColumnDefinitions="46,*,Auto">
+
+                                    <Border Grid.Column="0"
+                                            BackgroundColor="#dce8ff"
+                                            StrokeThickness="0"
+                                            WidthRequest="38" HeightRequest="38"
+                                            VerticalOptions="Center">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="11"/>
+                                        </Border.StrokeShape>
+                                        <Label Text="{Binding Icono}"
+                                               FontSize="18"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </Border>
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         VerticalOptions="Center"
+                                                         Spacing="3" Margin="10,0">
+                                        <Label Text="{Binding Nombre}"
+                                               FontSize="14" FontAttributes="Bold"
+                                               TextColor="#0a1f3d"/>
+                                        <Label Text="{Binding Categoria}"
+                                               FontSize="10" TextColor="#7a9abe"/>
+                                    </VerticalStackLayout>
+
+                                    <VerticalStackLayout Grid.Column="2"
+                                                         HorizontalOptions="End"
+                                                         VerticalOptions="Center"
+                                                         Spacing="2">
+                                        <Label Text="{Binding RachaActual, StringFormat='🔥 {0}'}"
+                                               FontSize="14" FontAttributes="Bold"
+                                               TextColor="#0a1f3d"
+                                               HorizontalOptions="End"/>
+                                        <Label Text="{Binding MejorRacha, StringFormat='Mejor: {0}'}"
+                                               FontSize="10" TextColor="#7a9abe"
+                                               HorizontalOptions="End"/>
+                                    </VerticalStackLayout>
+
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Text="Sin hábitos registrados aún."
+                       IsVisible="{Binding Habitos.Count, Converter={StaticResource CountToBoolConverter}}"
+                       FontSize="13" TextColor="#4a6a9a"
+                       HorizontalOptions="Center" Margin="0,20"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>
